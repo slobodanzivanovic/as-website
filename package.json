@@ -1,0 +1,22 @@
+{
+  "name": "as-website",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write './src/**/*.{html,js,jsx,ts,tsx}'"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.16",
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.16",
+    "vite": "^6.2.3"
+  },
+  "dependencies": {
+    "cssnano": "^7.0.6"
+  }
+}
