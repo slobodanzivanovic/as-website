@@ -1,16 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --font-inter: Inter, Avenir, Helvetica, Arial, sans-serif;
-
-  --drop-shadow-logo: 0 0 2em #646cffaa;
-  --drop-shadow-logo-tw: 0 0 2em #38bdf8aa;
-
-  --height-18: 4.5rem;
-
-  --color-transparent-white: rgba(255, 255, 255, 0.87);
-}
-
 @layer base {
   *,
   ::after,
@@ -22,7 +11,6 @@
 }
 
 :root {
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,9 +18,32 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  @apply font-medium text-[#646cff];
+.min-home-screen {
+  min-height: 65vh;
 }
-a:hover {
-  @apply text-[#535bf2];
+
+#main-header {
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+#mobile-menu-overlay {
+  transition: opacity 0.3s ease;
+}
+
+.service-button {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+#service-title,
+#service-description,
+#service-additional-info {
+  transition: opacity 0.3s ease;
+}
+
+#next-service-btn:hover {
+  transform: scale(1.05);
 }
