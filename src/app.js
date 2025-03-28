@@ -233,3 +233,49 @@ document.addEventListener("DOMContentLoaded", function () {
   handleScroll();
   initDetailsCarousel();
 });
+
+const form = document.getElementById("kontakt");
+const successMessage = document.getElementById("successMessage");
+
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formValues = {
+    name: form.elements.name.value,
+    email: form.elements.email.value,
+    message: form.elements.message.value,
+  };
+
+  const errors = validate(formValues, constraints);
+
+  if (errors) {
+    document.querySelectorAll(".error-message").forEach(function (element) {
+      element.textContent = "";
+    });
+
+    Object.keys(errors).forEach(function (fieldName) {
+      const errorElement = document.getElementById(fieldName + "Error");
+      if (errorElement) {
+        errorElement.textContent = errors[fieldName].join(", ");
+      }
+    });
+  } else {
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        successMessage.style.display = "block";
+        form.reset();
+      } else {
+        alert("Error:" + result.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+});
