@@ -1,5 +1,5 @@
 <?php
 
 return array(
-    "password" => "SlobodanKrokodil123"
-)
+    "password" => "SlobodanKrokodil123!"
+);

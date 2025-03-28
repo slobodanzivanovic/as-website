@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - PHP_ENABLE_XDEBUG=0
+    restart: always
+    networks:
+      - as-network
+
+networks:
+  as-network:
+    driver: bridge
