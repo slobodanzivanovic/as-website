@@ -232,50 +232,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
   handleScroll();
   initDetailsCarousel();
-});
 
-const form = document.getElementById("kontakt");
-const successMessage = document.getElementById("successMessage");
+  const heroForm = document.querySelector(".hero-form");
+  if (heroForm) {
+    heroForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-form.addEventListener("submit", async function (event) {
-  event.preventDefault();
+      const formData = new FormData(heroForm);
+      formData.append("form_type", "hero");
 
-  const formValues = {
-    name: form.elements.name.value,
-    email: form.elements.email.value,
-    message: form.elements.message.value,
-  };
+      try {
+        const response = await fetch("/php/mail.php", {
+          method: "POST",
+          body: formData,
+        });
 
-  const errors = validate(formValues, constraints);
+        const result = await response.json();
 
-  if (errors) {
-    document.querySelectorAll(".error-message").forEach(function (element) {
-      element.textContent = "";
-    });
+        if (result.success) {
+          const successMessage = document.createElement("div");
+          successMessage.className = "mt-4 p-2 bg-green-500 text-white rounded";
+          successMessage.textContent = "Vaša poruka je uspešno poslata!";
+          heroForm.appendChild(successMessage);
 
-    Object.keys(errors).forEach(function (fieldName) {
-      const errorElement = document.getElementById(fieldName + "Error");
-      if (errorElement) {
-        errorElement.textContent = errors[fieldName].join(", ");
+          heroForm.reset();
+
+          setTimeout(() => {
+            successMessage.remove();
+          }, 5000);
+        } else {
+          alert(
+            "Greška: " +
+              (result.error || "Došlo je do greške prilikom slanja poruke."),
+          );
+        }
+      } catch (error) {
+        console.error("Greška:", error);
+        alert("Došlo je do greške prilikom slanja poruke.");
       }
     });
-  } else {
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new URLSearchParams(new FormData(form)),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        successMessage.style.display = "block";
-        form.reset();
-      } else {
-        alert("Error:" + result.error);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
   }
+
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+      formData.append("form_type", "contact");
+
+      try {
+        const response = await fetch("/php/mail.php", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          const successMessage = document.createElement("div");
+          successMessage.className = "mt-4 p-2 bg-green-500 text-white rounded";
+          successMessage.textContent = "Vaša poruka je uspešno poslata!";
+          contactForm.appendChild(successMessage);
+
+          contactForm.reset();
+
+          setTimeout(() => {
+            successMessage.remove();
+          }, 5000);
+        } else {
+          alert(
+            "Greška: " +
+              (result.error || "Došlo je do greške prilikom slanja poruke."),
+          );
+        }
+      } catch (error) {
+        console.error("Greška:", error);
+        alert("Došlo je do greške prilikom slanja poruke.");
+      }
+    });
+  }
+
+  document.getElementById("current-year").textContent =
+    new Date().getFullYear();
 });

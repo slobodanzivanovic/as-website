@@ -3,9 +3,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../vendor/PHPMailer/src/Exception.php';
-require '../../vendor/PHPMailer/src/PHPMailer.php';
-require '../../vendor/PHPMailer/src/SMTP.php';
+require '../vendor/PHPMailer/src/Exception.php';
+require '../vendor/PHPMailer/src/PHPMailer.php';
+require '../vendor/PHPMailer/src/SMTP.php';
 
 class ContactFormHandler {
     private $config;
@@ -35,20 +35,46 @@ class ContactFormHandler {
         return true;
     }
 
-    private function validateInput($input) {
-        $name = trim($input['name'] ?? '');
-        $email = filter_var(trim($input['email'] ?? ''), FILTER_VALIDATE_EMAIL);
-        $message = trim($input['message'] ?? '');
+    private function validateInput($input, $isHeroForm = false) {
+        if ($isHeroForm) {
+            $name = trim($input['name'] ?? '');
+            $email = filter_var(trim($input['email'] ?? ''), FILTER_VALIDATE_EMAIL);
+            $phone = trim($input['phone'] ?? '');
+            $topic = trim($input['topic'] ?? '');
+            $message = trim($input['message'] ?? '');
 
-        if (empty($name) || !$email || strlen($message) > 1000) {
-            return false;
+            if (empty($name) || !$email || empty($phone) || strlen($message) > 1000) {
+                return false;
+            }
+
+            return [
+                'name' => htmlspecialchars($name),
+                'email' => $email,
+                'phone' => htmlspecialchars($phone),
+                'topic' => htmlspecialchars($topic),
+                'message' => htmlspecialchars($message),
+                'form_type' => 'hero'
+            ];
+        } else {
+            $name = trim($input['name'] ?? '');
+            $email = filter_var(trim($input['email'] ?? ''), FILTER_VALIDATE_EMAIL);
+            $phone = trim($input['phone'] ?? '');
+            $subject = trim($input['subject'] ?? '');
+            $message = trim($input['message'] ?? '');
+
+            if (empty($name) || !$email || empty($message) || strlen($message) > 1000) {
+                return false;
+            }
+
+            return [
+                'name' => htmlspecialchars($name),
+                'email' => $email,
+                'phone' => htmlspecialchars($phone),
+                'subject' => htmlspecialchars($subject),
+                'message' => htmlspecialchars($message),
+                'form_type' => 'contact'
+            ];
         }
-
-        return [
-            'name' => htmlspecialchars($name),
-            'email' => $email,
-            'message' => htmlspecialchars($message)
-        ];
     }
 
     private function isBot($input) {
@@ -112,7 +138,9 @@ class ContactFormHandler {
             die(json_encode(['success' => false, 'error' => 'Bot detektovan!']));
         }
 
-        $validInput = $this->validateInput($_POST);
+        $isHeroForm = isset($_POST['form_type']) && $_POST['form_type'] === 'hero';
+        
+        $validInput = $this->validateInput($_POST, $isHeroForm);
         if (!$validInput) {
             http_response_code(400);
             die(json_encode(['success' => false, 'error' => 'Pogrešno ste popunili']));
@@ -134,8 +162,16 @@ class ContactFormHandler {
             $mail->addReplyTo($validInput['email'], $validInput['name']);
 
             $mail->isHTML(true);
-            $mail->Subject = "AS - Contact Form: {$validInput['name']}";
-            $mail->Body = "Ime Prezime: {$validInput['name']}<br>Email: {$validInput['email']}<br>Poruka: {$validInput['message']}";
+            
+            if ($validInput['form_type'] === 'hero') {
+                $mail->Subject = "AS - Hero Form: {$validInput['name']}";
+                $emailBody = "Ime Prezime: {$validInput['name']}<br>Email: {$validInput['email']}<br>Telefon: {$validInput['phone']}<br>Tema: {$validInput['topic']}<br>Poruka: {$validInput['message']}";
+            } else {
+                $mail->Subject = "AS - Contact Form: {$validInput['name']}";
+                $emailBody = "Ime Prezime: {$validInput['name']}<br>Email: {$validInput['email']}<br>Telefon: {$validInput['phone']}<br>Tema: {$validInput['subject']}<br>Poruka: {$validInput['message']}";
+            }
+            
+            $mail->Body = $emailBody;
             
             $mail->send();
 
