@@ -220,6 +220,8 @@
                   </h2>
 
                   <form class="hero-form space-y-6">
+                    <input type="text" name="honeypot" style="display: none" />
+                    <input type="hidden" name="form_type" value="hero" />
                     <div>
                       <input
                         type="text"
@@ -1129,6 +1131,13 @@
 
                     <form class="contact-form space-y-6">
                       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        <input
+                          type="text"
+                          name="honeypot"
+                          style="display: none"
+                        />
+                        <input type="hidden" name="form_type" value="contact" />
+
                         <div>
                           <label for="name" class="mb-2 block text-gray-300">
                             Ime i prezime
