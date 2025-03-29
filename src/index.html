@@ -302,7 +302,7 @@
           <!-- Services/Details Carousel Section start -->
           <div
             id="usluge"
-            class="min-home-screen relative w-full overflow-hidden bg-gray-900"
+            class="min-services-screen relative w-full overflow-hidden bg-gray-900"
           >
             <!-- Background SVG -->
             <div class="absolute top-0 left-0 h-full w-full">
@@ -540,231 +540,253 @@
                 </div>
               </div>
             </div>
+          </div>
+          <!-- Services/Details Carousel Section end -->
 
+          <!-- Start a completely new section for additional services -->
+          <div class="relative w-full overflow-hidden bg-gray-900 py-8">
+            <!-- Background SVG -->
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 600"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V600H0V0Z" fill="#1E2A3B"></path>
+                <path
+                  d="M-300 200C150 250 450 600 1800 400"
+                  stroke="#293B62"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+            </div>
 
-              <!-- Additional services section with carousel -->
-              <div class="mt-20">
-                <h2 class="mb-12 text-center text-4xl font-light text-white">
-                  Naše dodatne usluge
-                </h2>
+            <!-- Content with relative positioning to appear above the background -->
+            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+              <!-- Title explicitly styled to ensure visibility -->
+              <h2 class="mb-4 text-5xl font-light text-white text-center">
+                Naše dodatne usluge
+              </h2>
 
-                <!-- Carousel container that matches existing width constraints -->
-                <div class="services-carousel relative mx-auto max-w-6xl">
-                  <!-- Slides container -->
-                  <div class="carousel-container overflow-hidden rounded-3xl">
-                    <div
-                      class="carousel-track transition-opacity duration-500"
-                      id="servicesTrack"
-                    >
-                      <!-- Slide 1: Transport Vozila -->
-                      <div class="carousel-slide relative w-full">
+              <!-- Carousel container -->
+              <div class="services-carousel relative mx-auto max-w-6xl">
+                <!-- Slides container -->
+                <div class="carousel-container overflow-hidden rounded-3xl">
+                  <div
+                    class="carousel-track transition-opacity duration-500"
+                    id="servicesTrack"
+                  >
+                    <!-- Slide 1: Transport Vozila -->
+                    <div class="carousel-slide relative w-full">
+                      <div
+                        class="relative aspect-video overflow-hidden rounded-3xl"
+                      >
+                        <!-- Background Image -->
+                        <img
+                          src="/img/transport-vozila.jpg"
+                          alt="Transport Vozila"
+                          class="h-full w-full object-cover"
+                        />
+
+                        <!-- Dark overlay -->
                         <div
-                          class="relative aspect-video overflow-hidden rounded-3xl"
+                          class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
+                        ></div>
+
+                        <!-- Content -->
+                        <div
+                          class="absolute inset-0 flex items-center justify-center"
                         >
-                          <!-- Background Image -->
-                          <img
-                            src="/img/transport-vozila.jpg"
-                            alt="Transport Vozila"
-                            class="h-full w-full object-cover"
-                          />
-
-                          <!-- Dark overlay -->
-                          <div
-                            class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
-                          ></div>
-
-                          <!-- Content -->
-                          <div
-                            class="absolute inset-0 flex items-center justify-center"
-                          >
-                            <div class="max-w-4xl px-4 text-center md:px-6">
-                              <h3 class="mb-4 text-3xl font-light text-white">
-                                Transport Vozila
-                              </h3>
-                              <p class="mb-6 text-lg text-gray-300">
-                                Usluge šlep službe za oštećena i neispravna
-                                vozila na celoj teritoriji Srbije, sa brzim
-                                izlaskom na teren.
-                              </p>
-                            </div>
+                          <div class="max-w-4xl px-4 text-center md:px-6">
+                            <h3 class="mb-4 text-3xl font-light text-white">
+                              Transport Vozila
+                            </h3>
+                            <p class="mb-6 text-lg text-gray-300">
+                              Usluge šlep službe za oštećena i neispravna vozila
+                              na celoj teritoriji Srbije, sa brzim izlaskom na
+                              teren.
+                            </p>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- Slide 2: Servis Vozila -->
-                      <div class="carousel-slide relative w-full">
+                    <!-- Slide 2: Servis Vozila -->
+                    <div class="carousel-slide relative w-full">
+                      <div
+                        class="relative aspect-video overflow-hidden rounded-3xl"
+                      >
+                        <!-- Background Image -->
+                        <img
+                          src="/img/servis-vozila.jpeg"
+                          alt="Servis Vozila"
+                          class="h-full w-full object-cover"
+                        />
+
+                        <!-- Dark overlay -->
                         <div
-                          class="relative aspect-video overflow-hidden rounded-3xl"
+                          class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
+                        ></div>
+
+                        <!-- Content -->
+                        <div
+                          class="absolute inset-0 flex items-center justify-center"
                         >
-                          <!-- Background Image -->
-                          <img
-                            src="/img/servis-vozila.jpeg"
-                            alt="Servis Vozila"
-                            class="h-full w-full object-cover"
-                          />
-
-                          <!-- Dark overlay -->
-                          <div
-                            class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
-                          ></div>
-
-                          <!-- Content -->
-                          <div
-                            class="absolute inset-0 flex items-center justify-center"
-                          >
-                            <div class="max-w-4xl px-4 text-center md:px-6">
-                              <h3 class="mb-4 text-3xl font-light text-white">
-                                Servis Vozila
-                              </h3>
-                              <p class="mb-6 text-lg text-gray-300">
-                                Profesionalna popravka oštećenih vozila u našem
-                                servisu sa iskusnim majstorima i garantovanim
-                                delovima.
-                              </p>
-                            </div>
+                          <div class="max-w-4xl px-4 text-center md:px-6">
+                            <h3 class="mb-4 text-3xl font-light text-white">
+                              Servis Vozila
+                            </h3>
+                            <p class="mb-6 text-lg text-gray-300">
+                              Profesionalna popravka oštećenih vozila u našem
+                              servisu sa iskusnim majstorima i garantovanim
+                              delovima.
+                            </p>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- Slide 3: Rent-a-Car -->
-                      <div class="carousel-slide relative w-full">
+                    <!-- Slide 3: Rent-a-Car -->
+                    <div class="carousel-slide relative w-full">
+                      <div
+                        class="relative aspect-video overflow-hidden rounded-3xl"
+                      >
+                        <!-- Background Image -->
+                        <img
+                          src="/img/rent-a-car.png"
+                          alt="Rent-a-Car"
+                          class="h-full w-full object-cover"
+                        />
+
+                        <!-- Dark overlay -->
                         <div
-                          class="relative aspect-video overflow-hidden rounded-3xl"
+                          class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
+                        ></div>
+
+                        <!-- Content -->
+                        <div
+                          class="absolute inset-0 flex items-center justify-center"
                         >
-                          <!-- Background Image -->
-                          <img
-                            src="/img/rent-a-car.png"
-                            alt="Rent-a-Car"
-                            class="h-full w-full object-cover"
-                          />
-
-                          <!-- Dark overlay -->
-                          <div
-                            class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
-                          ></div>
-
-                          <!-- Content -->
-                          <div
-                            class="absolute inset-0 flex items-center justify-center"
-                          >
-                            <div class="max-w-4xl px-4 text-center md:px-6">
-                              <h3 class="mb-4 text-3xl font-light text-white">
-                                Rent-a-Car
-                              </h3>
-                              <p class="mb-6 text-lg text-gray-300">
-                                Usluge iznajmljivanja vozila tokom perioda
-                                popravke vašeg automobila, po povoljnim
-                                uslovima.
-                              </p>
-                            </div>
+                          <div class="max-w-4xl px-4 text-center md:px-6">
+                            <h3 class="mb-4 text-3xl font-light text-white">
+                              Rent-a-Car
+                            </h3>
+                            <p class="mb-6 text-lg text-gray-300">
+                              Usluge iznajmljivanja vozila tokom perioda
+                              popravke vašeg automobila, po povoljnim uslovima.
+                            </p>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- Slide 4: Otkup Vozila -->
-                      <div class="carousel-slide relative w-full">
+                    <!-- Slide 4: Otkup Vozila -->
+                    <div class="carousel-slide relative w-full">
+                      <div
+                        class="relative aspect-video overflow-hidden rounded-3xl"
+                      >
+                        <!-- Background Image -->
+                        <img
+                          src="/img/otkup-vozila.jpg"
+                          alt="Otkup Vozila"
+                          class="h-full w-full object-cover"
+                        />
+
+                        <!-- Dark overlay -->
                         <div
-                          class="relative aspect-video overflow-hidden rounded-3xl"
+                          class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
+                        ></div>
+
+                        <!-- Content -->
+                        <div
+                          class="absolute inset-0 flex items-center justify-center"
                         >
-                          <!-- Background Image -->
-                          <img
-                            src="/img/otkup-vozila.jpg"
-                            alt="Otkup Vozila"
-                            class="h-full w-full object-cover"
-                          />
-
-                          <!-- Dark overlay -->
-                          <div
-                            class="bg-opacity-40 absolute inset-0 bg-[#1111115f]"
-                          ></div>
-
-                          <!-- Content -->
-                          <div
-                            class="absolute inset-0 flex items-center justify-center"
-                          >
-                            <div class="max-w-4xl px-4 text-center md:px-6">
-                              <h3 class="mb-4 text-3xl font-light text-white">
-                                Otkup Vozila
-                              </h3>
-                              <p class="mb-6 text-lg text-gray-300">
-                                Otkup vozila koja nisu u voznom stanju po fer
-                                cenama, uz kompletan transport i potrebnu
-                                dokumentaciju.
-                              </p>
-                            </div>
+                          <div class="max-w-4xl px-4 text-center md:px-6">
+                            <h3 class="mb-4 text-3xl font-light text-white">
+                              Otkup Vozila
+                            </h3>
+                            <p class="mb-6 text-lg text-gray-300">
+                              Otkup vozila koja nisu u voznom stanju po fer
+                              cenama, uz kompletan transport i potrebnu
+                              dokumentaciju.
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <!-- Navigation buttons -->
-                  <button
-                    class="carousel-prev absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-blue-800 p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100"
-                    aria-label="Previous slide"
+                <!-- Navigation buttons -->
+                <button
+                  class="carousel-prev absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-blue-800 p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100"
+                  aria-label="Previous slide"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-6 w-6"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="h-6 w-6"
-                    >
-                      <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                  </button>
-                  <button
-                    class="carousel-next absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-blue-800 p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100"
-                    aria-label="Next slide"
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button
+                  class="carousel-next absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-blue-800 p-2 text-white opacity-70 transition-opacity duration-300 hover:opacity-100"
+                  aria-label="Next slide"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-6 w-6"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="h-6 w-6"
-                    >
-                      <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                  </button>
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
 
-                  <!-- Dots indicators -->
-                  <div class="carousel-dots mt-8 flex justify-center space-x-2">
-                    <button
-                      class="active h-3 w-3 rounded-full bg-teal-300 opacity-90"
-                      aria-label="Go to slide 1"
-                      data-index="0"
-                    ></button>
-                    <button
-                      class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
-                      aria-label="Go to slide 2"
-                      data-index="1"
-                    ></button>
-                    <button
-                      class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
-                      aria-label="Go to slide 3"
-                      data-index="2"
-                    ></button>
-                    <button
-                      class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
-                      aria-label="Go to slide 4"
-                      data-index="3"
-                    ></button>
-                  </div>
+                <!-- Dots indicators -->
+                <div class="carousel-dots mt-8 flex justify-center space-x-2">
+                  <button
+                    class="active h-3 w-3 rounded-full bg-teal-300 opacity-90"
+                    aria-label="Go to slide 1"
+                    data-index="0"
+                  ></button>
+                  <button
+                    class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
+                    aria-label="Go to slide 2"
+                    data-index="1"
+                  ></button>
+                  <button
+                    class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
+                    aria-label="Go to slide 3"
+                    data-index="2"
+                  ></button>
+                  <button
+                    class="h-3 w-3 rounded-full bg-white opacity-50 hover:opacity-70"
+                    aria-label="Go to slide 4"
+                    data-index="3"
+                  ></button>
                 </div>
               </div>
+            </div>
           </div>
-          <!-- Services/Details Carousel Section end -->
 
           <!-- About Us Section Start -->
           <div
@@ -1033,7 +1055,7 @@
                 <div class="w-full lg:w-1/2">
                   <div class="relative">
                     <div
-                      class="absolute -inset-4 rounded-3xl bg-orange-500 opacity-50 md:-inset-6"
+                      class="absolute -inset-4 rounded-3xl bg-blue-800 opacity-50 md:-inset-6"
                     ></div>
                     <div class="relative z-10 overflow-hidden rounded-3xl">
                       <img
@@ -1047,7 +1069,7 @@
 
                 <!-- Right side - text -->
                 <div class="w-full text-white lg:w-1/2">
-                  <div class="rounded-3xl bg-orange-500 p-8">
+                  <div class="rounded-3xl bg-blue-800 p-8">
                     <h3 class="mb-6 text-center text-3xl font-light">
                       Želite Maksimalnu naplatu štete?
                     </h3>
@@ -1086,7 +1108,7 @@
                 <div class="w-full lg:w-1/2">
                   <div class="relative">
                     <div
-                      class="absolute -inset-4 rounded-3xl bg-red-600 opacity-50 md:-inset-6"
+                      class="absolute -inset-4 rounded-3xl bg-blue-800 opacity-50 md:-inset-6"
                     ></div>
                     <div class="relative z-10 overflow-hidden rounded-3xl">
                       <img
@@ -1100,7 +1122,7 @@
 
                 <!-- Left side - text -->
                 <div class="w-full text-white lg:w-1/2">
-                  <div class="rounded-3xl bg-red-600 p-8">
+                  <div class="rounded-3xl bg-blue-800 p-8">
                     <h3 class="mb-6 text-center text-3xl font-light">
                       Šta treba da znate:
                     </h3>

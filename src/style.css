@@ -22,6 +22,10 @@
   min-height: 65vh;
 }
 
+.min-services-screen {
+  min-height: 40vh;
+}
+
 #main-header {
   transition:
     background-color 0.3s ease,

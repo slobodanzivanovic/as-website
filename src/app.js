@@ -9,22 +9,25 @@ const initServicesCarousel = () => {
   let touchEndX = 0;
 
   const updateSlides = () => {
-    slides.forEach((slide, index) => {
+    // Hide all slides
+    slides.forEach((slide) => {
       slide.style.display = "none";
       slide.style.opacity = 0;
     });
 
+    // Show current slide
     slides[currentIndex].style.display = "block";
     setTimeout(() => {
       slides[currentIndex].style.opacity = 1;
     }, 10);
 
+    // Update dots
     dots.forEach((dot, i) => {
       if (i === currentIndex) {
-        dot.classList.add("bg-teal-300", "opacity-90");
+        dot.classList.add("active", "bg-teal-300", "opacity-90");
         dot.classList.remove("bg-white", "opacity-50");
       } else {
-        dot.classList.remove("bg-teal-300", "opacity-90");
+        dot.classList.remove("active", "bg-teal-300", "opacity-90");
         dot.classList.add("bg-white", "opacity-50");
       }
     });
@@ -85,20 +88,30 @@ const initServicesCarousel = () => {
     }
   });
 
+  // Autoplay functionality
   let autoplayInterval;
 
   const startAutoplay = () => {
+    // Clear any existing interval first
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+    }
+
     autoplayInterval = setInterval(() => {
       goToSlide(currentIndex + 1);
-    }, 7000);
+    }, 5000); // 5 seconds
   };
 
   const stopAutoplay = () => {
-    clearInterval(autoplayInterval);
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+    }
   };
 
+  // Start autoplay immediately
   startAutoplay();
 
+  // Pause autoplay on mouse hover or touch
   const carousel = document.querySelector(".services-carousel");
   carousel.addEventListener("mouseenter", stopAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
