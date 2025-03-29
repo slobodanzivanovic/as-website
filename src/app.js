@@ -1,3 +1,113 @@
+const initServicesCarousel = () => {
+  const slides = document.querySelectorAll(".carousel-slide");
+  const nextButton = document.querySelector(".carousel-next");
+  const prevButton = document.querySelector(".carousel-prev");
+  const dots = document.querySelectorAll(".carousel-dots button");
+
+  let currentIndex = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const updateSlides = () => {
+    slides.forEach((slide, index) => {
+      slide.style.display = "none";
+      slide.style.opacity = 0;
+    });
+
+    slides[currentIndex].style.display = "block";
+    setTimeout(() => {
+      slides[currentIndex].style.opacity = 1;
+    }, 10);
+
+    dots.forEach((dot, i) => {
+      if (i === currentIndex) {
+        dot.classList.add("bg-teal-300", "opacity-90");
+        dot.classList.remove("bg-white", "opacity-50");
+      } else {
+        dot.classList.remove("bg-teal-300", "opacity-90");
+        dot.classList.add("bg-white", "opacity-50");
+      }
+    });
+  };
+
+  updateSlides();
+
+  const goToSlide = (index) => {
+    if (index < 0) {
+      index = slides.length - 1;
+    } else if (index >= slides.length) {
+      index = 0;
+    }
+
+    currentIndex = index;
+    updateSlides();
+  };
+
+  nextButton.addEventListener("click", () => {
+    goToSlide(currentIndex + 1);
+  });
+
+  prevButton.addEventListener("click", () => {
+    goToSlide(currentIndex - 1);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      goToSlide(i);
+    });
+  });
+
+  const container = document.querySelector(".carousel-container");
+
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  container.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  const handleSwipe = () => {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      goToSlide(currentIndex + 1);
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      goToSlide(currentIndex - 1);
+    }
+  };
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      goToSlide(currentIndex - 1);
+    } else if (e.key === "ArrowRight") {
+      goToSlide(currentIndex + 1);
+    }
+  });
+
+  let autoplayInterval;
+
+  const startAutoplay = () => {
+    autoplayInterval = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 7000);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(autoplayInterval);
+  };
+
+  startAutoplay();
+
+  const carousel = document.querySelector(".services-carousel");
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+  carousel.addEventListener("touchstart", stopAutoplay);
+  carousel.addEventListener("touchend", () => {
+    setTimeout(startAutoplay, 500);
+  });
+};
+
 const initDetailsCarousel = () => {
   const jobDetails = [
     {
@@ -232,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   handleScroll();
   initDetailsCarousel();
+  initServicesCarousel();
 
   const heroForm = document.querySelector(".hero-form");
   if (heroForm) {

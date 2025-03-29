@@ -47,3 +47,111 @@
 #next-service-btn:hover {
   transform: scale(1.05);
 }
+
+.services-carousel {
+  position: relative;
+  padding: 0 1rem;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.carousel-slide {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  display: none;
+}
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(30, 64, 175, 0.7);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: rgba(30, 64, 175, 0.9);
+  opacity: 1;
+}
+
+.carousel-prev {
+  left: 1rem;
+}
+
+.carousel-next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.carousel-dots button.active {
+  background-color: #5eead4;
+  opacity: 0.9;
+}
+
+.carousel-dots button:not(.active) {
+  background-color: white;
+  opacity: 0.5;
+}
+
+.carousel-dots button:hover:not(.active) {
+  opacity: 0.7;
+}
+
+.services-carousel {
+  touch-action: pan-y;
+}
+
+@media (max-width: 768px) {
+  .carousel-prev,
+  .carousel-next {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .carousel-prev {
+    left: 0.5rem;
+  }
+  
+  .carousel-next {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-prev,
+  .carousel-next {
+    width: 36px;
+    height: 36px;
+  }
+}
