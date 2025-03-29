@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
 import fs from "fs";
 
 export default defineConfig({
@@ -13,6 +13,13 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         privacy: resolve(__dirname, "src/politika-privatnosti.html"),
+        400: resolve(__dirname, "src/400.html"),
+        401: resolve(__dirname, "src/401.html"),
+        403: resolve(__dirname, "src/403.html"),
+        404: resolve(__dirname, "src/404.html"),
+        500: resolve(__dirname, "src/500.html"),
+        501: resolve(__dirname, "src/501.html"),
+        502: resolve(__dirname, "src/502.html"),
       },
     },
   },
@@ -37,8 +44,12 @@ export default defineConfig({
           resolve(__dirname, "dist/php/config.php"),
         );
         fs.copyFileSync(
-          resolve(__dirname, "src/php/mail_template.html"),
-          resolve(__dirname, "dist/php/mail_template.html"),
+          resolve(__dirname, "src/php/user-email-template.html"),
+          resolve(__dirname, "dist/php/user-email-template.html"),
+        );
+        fs.copyFileSync(
+          resolve(__dirname, "src/php/admin-email-template.html"),
+          resolve(__dirname, "dist/php/admin-email-template.html"),
         );
 
         fs.copyFileSync(

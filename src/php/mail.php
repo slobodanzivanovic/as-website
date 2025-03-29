@@ -138,12 +138,12 @@ class ContactFormHandler {
             $mail->isSMTP();
             $mail->Host = "mailcluster.loopia.se";
             $mail->SMTPAuth = true;
-            $mail->Username = "info@astraffic.rs";
+            $mail->Username = "info@programiraj.rs";
             $mail->Password = $this->config["password"];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom("info@astraffic.rs", "AS Traffic And Technical Consulting");
+            $mail->setFrom("info@programiraj.rs", "AS Traffic And Technical Consulting");
             $mail->addAddress($validInput['email'], $validInput['name']);
 
             $mail->isHTML(true);
@@ -189,13 +189,13 @@ class ContactFormHandler {
             $mail->isSMTP();
             $mail->Host = "mailcluster.loopia.se";
             $mail->SMTPAuth = true;
-            $mail->Username = "info@astraffic.rs";
+            $mail->Username = "info@programiraj.rs";
             $mail->Password = $this->config["password"];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom("info@astraffic.rs", "AS Traffic And Technical Consulting");
-            $mail->addAddress("info@astraffic.rs");
+            $mail->setFrom("info@programiraj.rs", "AS Traffic And Technical Consulting");
+            $mail->addAddress("info@programiraj.rs");
             $mail->addReplyTo($validInput['email'], $validInput['name']);
 
             $mail->isHTML(true);
