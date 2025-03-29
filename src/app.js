@@ -29,87 +29,49 @@ const initMobileMenu = () => {
   `;
   document.head.appendChild(style);
 
-  // Function to update active mobile link
-  const updateActiveMobileLink = () => {
-    const currentSection = window.location.hash.replace("#", "") || "pocetna";
+  // Get all mobile menu links
+  const mobileLinks = document.querySelectorAll(
+    "#mobile-menu-overlay a[data-mobile-section]",
+  );
 
-    document
-      .querySelectorAll("#mobile-menu-overlay a[data-mobile-section]")
-      .forEach((link) => {
-        const section = link.getAttribute("data-mobile-section");
-        if (section === currentSection) {
-          link.classList.add("active");
-          link.style.fontWeight = "bold";
+  // Function to update the active section in mobile menu
+  const updateMobileMenu = () => {
+    // Get the current section ID from window.activeSection
+    const currentSection = window.activeSection || "pocetna";
 
-          // Ensure the active indicator exists
-          if (!link.querySelector("span")) {
-            const indicator = document.createElement("span");
-            indicator.className =
-              "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-            indicator.style.backgroundColor = "white";
-            indicator.style.height = "2px";
-            link.appendChild(indicator);
-          }
-        } else {
-          link.classList.remove("active");
-          link.style.fontWeight = "normal";
+    // Update all mobile links
+    mobileLinks.forEach((link) => {
+      const linkSection = link.getAttribute("data-mobile-section");
 
-          // Remove indicator from non-active items (except Početna which always has it)
-          if (section !== "pocetna") {
-            const indicator = link.querySelector("span");
-            if (indicator) indicator.remove();
-          }
+      // If this link matches the current section
+      if (linkSection === currentSection) {
+        // Bold this link
+        link.style.fontWeight = "bold";
+
+        // Add underline if it doesn't exist
+        if (!link.querySelector("span")) {
+          const indicator = document.createElement("span");
+          indicator.className =
+            "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
+          indicator.style.backgroundColor = "white";
+          indicator.style.height = "2px";
+          link.appendChild(indicator);
         }
-      });
+      } else {
+        // Normal weight for non-active links
+        link.style.fontWeight = "normal";
+
+        // Remove underline from non-active links
+        const indicator = link.querySelector("span");
+        if (indicator) {
+          indicator.remove();
+        }
+      }
+    });
   };
 
-  // Call initially
-  updateActiveMobileLink();
-
-  // Update on hash change
-  window.addEventListener("hashchange", updateActiveMobileLink);
-
-  // Integrate with existing scroll handling if applicable
-  if (typeof handleScroll === "function") {
-    const originalHandleScroll = handleScroll;
-    window.handleScroll = function () {
-      originalHandleScroll();
-
-      // Get current active section from your existing code
-      if (window.activeSection) {
-        const currentSection = window.activeSection;
-
-        document
-          .querySelectorAll("#mobile-menu-overlay a[data-mobile-section]")
-          .forEach((link) => {
-            const section = link.getAttribute("data-mobile-section");
-            if (section === currentSection) {
-              link.classList.add("active");
-              link.style.fontWeight = "bold";
-
-              // Ensure the active indicator exists
-              if (!link.querySelector("span")) {
-                const indicator = document.createElement("span");
-                indicator.className =
-                  "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-                indicator.style.backgroundColor = "white";
-                indicator.style.height = "2px";
-                link.appendChild(indicator);
-              }
-            } else {
-              link.classList.remove("active");
-              link.style.fontWeight = "normal";
-
-              // Remove indicator from non-active items (except Početna which always has it)
-              if (section !== "pocetna") {
-                const indicator = link.querySelector("span");
-                if (indicator) indicator.remove();
-              }
-            }
-          });
-      }
-    };
-  }
+  // Initial update
+  updateMobileMenu();
 };
 
 const initServicesCarousel = () => {
@@ -381,6 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const updateActiveSection = (newActiveSection) => {
     activeSection = newActiveSection;
+    window.activeSection = activeSection; // Make it accessible globally
 
     document.querySelectorAll("nav a[data-section]").forEach((link) => {
       const section = link.getAttribute("data-section");
@@ -407,27 +370,35 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    document.querySelectorAll("a[data-mobile-section]").forEach((link) => {
+    // Also update mobile menu links
+    const mobileLinks = document.querySelectorAll(
+      "#mobile-menu-overlay a[data-mobile-section]",
+    );
+    mobileLinks.forEach((link) => {
       const section = link.getAttribute("data-mobile-section");
 
+      // If this link matches the current section
       if (section === activeSection) {
-        link.classList.add("text-primary-500");
-        link.classList.remove("text-white");
+        // Bold this link
+        link.style.fontWeight = "bold";
 
-        let indicator = link.querySelector("span");
-        if (!indicator) {
-          indicator = document.createElement("span");
+        // Add underline if it doesn't exist
+        if (!link.querySelector("span")) {
+          const indicator = document.createElement("span");
           indicator.className =
-            "absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-primary-500 mb-0";
+            "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
+          indicator.style.backgroundColor = "white";
+          indicator.style.height = "2px";
           link.appendChild(indicator);
         }
       } else {
-        link.classList.remove("text-primary-500");
-        link.classList.add("text-white");
+        // Normal weight for non-active links
+        link.style.fontWeight = "normal";
 
+        // Remove underline from non-active links
         const indicator = link.querySelector("span");
         if (indicator) {
-          link.removeChild(indicator);
+          indicator.remove();
         }
       }
     });
