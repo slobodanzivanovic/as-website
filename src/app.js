@@ -1,3 +1,117 @@
+const initMobileMenu = () => {
+  // Add CSS to document head to ensure mobile menu visibility
+  const style = document.createElement("style");
+  style.textContent = `
+    /* Force white text on mobile menu items */
+    #mobile-menu-overlay a {
+      color: #ffffff !important;
+      opacity: 1 !important;
+    }
+    
+    /* Enhanced active indicator */
+    #mobile-menu-overlay a[data-mobile-section].active span,
+    #mobile-menu-overlay a[data-mobile-section="pocetna"] span {
+      background-color: #ffffff !important;
+      height: 2px !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Better borders */
+    #mobile-menu-overlay a {
+      border-color: rgba(255,255,255,0.2) !important;
+    }
+    
+    /* Darker mobile menu background for better contrast */
+    #mobile-menu-overlay {
+      background-color: #1a1a1a !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Function to update active mobile link
+  const updateActiveMobileLink = () => {
+    const currentSection = window.location.hash.replace("#", "") || "pocetna";
+
+    document
+      .querySelectorAll("#mobile-menu-overlay a[data-mobile-section]")
+      .forEach((link) => {
+        const section = link.getAttribute("data-mobile-section");
+        if (section === currentSection) {
+          link.classList.add("active");
+          link.style.fontWeight = "bold";
+
+          // Ensure the active indicator exists
+          if (!link.querySelector("span")) {
+            const indicator = document.createElement("span");
+            indicator.className =
+              "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
+            indicator.style.backgroundColor = "white";
+            indicator.style.height = "2px";
+            link.appendChild(indicator);
+          }
+        } else {
+          link.classList.remove("active");
+          link.style.fontWeight = "normal";
+
+          // Remove indicator from non-active items (except Početna which always has it)
+          if (section !== "pocetna") {
+            const indicator = link.querySelector("span");
+            if (indicator) indicator.remove();
+          }
+        }
+      });
+  };
+
+  // Call initially
+  updateActiveMobileLink();
+
+  // Update on hash change
+  window.addEventListener("hashchange", updateActiveMobileLink);
+
+  // Integrate with existing scroll handling if applicable
+  if (typeof handleScroll === "function") {
+    const originalHandleScroll = handleScroll;
+    window.handleScroll = function () {
+      originalHandleScroll();
+
+      // Get current active section from your existing code
+      if (window.activeSection) {
+        const currentSection = window.activeSection;
+
+        document
+          .querySelectorAll("#mobile-menu-overlay a[data-mobile-section]")
+          .forEach((link) => {
+            const section = link.getAttribute("data-mobile-section");
+            if (section === currentSection) {
+              link.classList.add("active");
+              link.style.fontWeight = "bold";
+
+              // Ensure the active indicator exists
+              if (!link.querySelector("span")) {
+                const indicator = document.createElement("span");
+                indicator.className =
+                  "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
+                indicator.style.backgroundColor = "white";
+                indicator.style.height = "2px";
+                link.appendChild(indicator);
+              }
+            } else {
+              link.classList.remove("active");
+              link.style.fontWeight = "normal";
+
+              // Remove indicator from non-active items (except Početna which always has it)
+              if (section !== "pocetna") {
+                const indicator = link.querySelector("span");
+                if (indicator) indicator.remove();
+              }
+            }
+          });
+      }
+    };
+  }
+};
+
 const initServicesCarousel = () => {
   const slides = document.querySelectorAll(".carousel-slide");
   const nextButton = document.querySelector(".carousel-next");
@@ -356,6 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
   handleScroll();
   initDetailsCarousel();
   initServicesCarousel();
+  initMobileMenu();
 
   const heroForm = document.querySelector(".hero-form");
   if (heroForm) {
@@ -375,7 +490,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (result.success) {
           const successMessage = document.createElement("div");
-          successMessage.className = "mt-4 p-2 bg-primary-500 text-white rounded";
+          successMessage.className =
+            "mt-4 p-2 bg-primary-500 text-white rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           heroForm.appendChild(successMessage);
 
@@ -415,7 +531,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (result.success) {
           const successMessage = document.createElement("div");
-          successMessage.className = "mt-4 p-2 bg-primary-500 text-white rounded";
+          successMessage.className =
+            "mt-4 p-2 bg-primary-500 text-white rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           contactForm.appendChild(successMessage);
 

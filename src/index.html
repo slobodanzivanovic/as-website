@@ -96,9 +96,8 @@
             </div>
           </header>
 
-          <!-- Mobile menu overlay (hidden by default) -->
           <div
-            class="bg-opacity-98 fixed inset-0 z-40 hidden bg-white md:hidden"
+            class="bg-primary-800 fixed inset-0 z-40 hidden md:hidden"
             id="mobile-menu-overlay"
             style="padding-top: 90px"
           >
@@ -106,52 +105,87 @@
               <nav class="flex flex-col items-center space-y-6">
                 <a
                   href="#pocetna"
-                  class="border-primary-100 text-primary-800 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
+                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="pocetna"
+                  style="
+                    color: white !important;
+                    border-color: rgba(255, 255, 255, 0.2);
+                  "
                 >
                   Početna
                   <span
-                    class="bg-primary-800 absolute bottom-0 left-1/2 mb-0 h-0.5 w-16 -translate-x-1/2 transform"
+                    class="absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform"
+                    style="background-color: white; height: 2px"
                   ></span>
                 </a>
                 <a
                   href="#usluge"
-                  class="border-primary-100 text-primary-600 hover:text-primary-800 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
+                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="usluge"
+                  style="
+                    color: white !important;
+                    border-color: rgba(255, 255, 255, 0.2);
+                  "
                 >
                   Usluge
                 </a>
                 <a
                   href="#o-nama"
-                  class="border-primary-100 text-primary-600 hover:text-primary-800 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
+                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="o-nama"
+                  style="
+                    color: white !important;
+                    border-color: rgba(255, 255, 255, 0.2);
+                  "
                 >
                   O Nama
                 </a>
                 <a
                   href="#potrazivanja"
-                  class="border-primary-100 text-primary-600 hover:text-primary-800 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
+                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="potrazivanja"
+                  style="
+                    color: white !important;
+                    border-color: rgba(255, 255, 255, 0.2);
+                  "
                 >
                   Naknada Štete
                 </a>
                 <a
                   href="#kontakt"
-                  class="text-primary-600 hover:text-primary-800 relative w-full py-3 text-center text-xl font-medium transition-colors duration-200"
+                  class="relative w-full py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="kontakt"
+                  style="color: white !important"
                 >
                   Kontakt
                 </a>
               </nav>
             </div>
           </div>
-          <!-- Header end -->
 
           <!-- Hero section start -->
           <div
             id="pocetna"
-            class="min-home-screen bg-background-light shape-bg relative w-full overflow-hidden pt-24"
+            class="min-home-screen bg-background-light relative w-full overflow-hidden pt-24"
           >
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M-300 200C150 250 450 600 1800 400"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto flex flex-col items-center justify-between px-4 py-16 sm:px-6 lg:flex-row lg:px-8"
             >
@@ -313,6 +347,24 @@
             id="usluge"
             class="min-services-screen bg-background-light shape-bg relative w-full overflow-hidden"
           >
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M1800 100C1300 300 900 100 300 400"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto flex flex-col items-center justify-center px-4 py-12 sm:px-6 md:py-24 lg:px-8"
             >
@@ -540,6 +592,24 @@
           <div
             class="bg-background-light shape-bg relative w-full overflow-hidden py-12 md:py-16"
           >
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M-300 600C200 500 600 800 1800 300"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <!-- Content with relative positioning -->
             <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
               <!-- Title -->
@@ -783,6 +853,24 @@
             id="o-nama"
             class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden"
           >
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M-300 600C200 500 600 800 1800 300"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto px-4 py-16 sm:px-6 md:py-24 lg:px-8"
             >
@@ -990,6 +1078,24 @@
             id="potrazivanja"
             class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden"
           >
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M1440 700C800 500 400 800 0 500"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto px-4 py-16 sm:px-6 md:py-24 lg:px-8"
             >
@@ -1169,8 +1275,24 @@
             id="kontakt"
             class="bg-background-light shape-bg relative w-full overflow-hidden"
           >
-            <!-- Background shapes handled by shape-bg class in CSS -->
-
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 900"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path
+                  d="M0 300C600 200 800 500 1440 200"
+                  stroke="#f5f5f5"
+                  stroke-width="300"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto px-4 py-16 sm:px-6 md:py-24 lg:px-8"
             >
@@ -1550,6 +1672,24 @@
 
           <!-- Google Map Section start -->
           <div class="bg-background-light relative w-full overflow-hidden">
+            <div class="absolute top-0 left-0 h-full w-full">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 1440 600"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H1440V600H0V0Z" fill="#ffffff" />
+                <path
+                  d="M-100 450C300 350 1000 500 1500 300"
+                  stroke="#f5f5f5"
+                  stroke-width="250"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
             <div
               class="relative z-10 container mx-auto px-4 py-16 sm:px-6 lg:px-8"
             >
