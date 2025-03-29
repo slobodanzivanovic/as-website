@@ -24,10 +24,10 @@ const initServicesCarousel = () => {
     // Update dots
     dots.forEach((dot, i) => {
       if (i === currentIndex) {
-        dot.classList.add("active", "bg-teal-300", "opacity-90");
+        dot.classList.add("active", "bg-primary-500", "opacity-90");
         dot.classList.remove("bg-white", "opacity-50");
       } else {
-        dot.classList.remove("active", "bg-teal-300", "opacity-90");
+        dot.classList.remove("active", "bg-primary-500", "opacity-90");
         dot.classList.add("bg-white", "opacity-50");
       }
     });
@@ -185,18 +185,18 @@ const initDetailsCarousel = () => {
       if (index === activeIndex) {
         button.classList.add("transform", "scale-110");
         button.classList.remove("opacity-70");
-        buttonDiv.classList.add("ring-2", "ring-blue-300");
+        buttonDiv.classList.add("ring-2", "ring-primary-300");
 
         if (!highlightDiv) {
           const div = document.createElement("div");
           div.className =
-            "absolute -inset-3 border border-blue-300 rounded-full opacity-20";
+            "absolute -inset-3 border border-primary-300 rounded-full opacity-20";
           button.querySelector("div").appendChild(div);
         }
       } else {
         button.classList.remove("transform", "scale-110");
         button.classList.add("opacity-70");
-        buttonDiv.classList.remove("ring-2", "ring-blue-300");
+        buttonDiv.classList.remove("ring-2", "ring-primary-300");
 
         if (highlightDiv) {
           highlightDiv.remove();
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isScrolled) {
       header.classList.remove("absolute");
       header.classList.add("fixed", "top-0");
-      header.style.backgroundColor = "rgba(17, 24, 39, 0.5)";
+      header.style.backgroundColor = "rgba(17, 24, 39, 0.1)";
       header.style.backdropFilter = "blur(10px)";
     } else {
       header.classList.remove("fixed", "top-0");
@@ -272,19 +272,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const section = link.getAttribute("data-section");
 
       if (section === activeSection) {
-        link.classList.add("text-blue-800");
-        link.classList.remove("text-gray-700");
+        link.classList.add("text-primary-800");
+        link.classList.remove("text-primary-700");
 
         let indicator = link.querySelector("span");
         if (!indicator) {
           indicator = document.createElement("span");
           indicator.className =
-            "absolute bottom-0 left-0 w-full h-0.5 bg-blue-800 -mb-1";
+            "absolute bottom-0 left-0 w-full h-0.5 bg-primary-800 -mb-1";
           link.appendChild(indicator);
         }
       } else {
-        link.classList.remove("text-blue-800");
-        link.classList.add("text-gray-700");
+        link.classList.remove("text-primary-800");
+        link.classList.add("text-primary-700");
 
         const indicator = link.querySelector("span");
         if (indicator) {
@@ -297,18 +297,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const section = link.getAttribute("data-mobile-section");
 
       if (section === activeSection) {
-        link.classList.add("text-teal-300");
+        link.classList.add("text-primary-500");
         link.classList.remove("text-white");
 
         let indicator = link.querySelector("span");
         if (!indicator) {
           indicator = document.createElement("span");
           indicator.className =
-            "absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-teal-300 mb-0";
+            "absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-primary-500 mb-0";
           link.appendChild(indicator);
         }
       } else {
-        link.classList.remove("text-teal-300");
+        link.classList.remove("text-primary-500");
         link.classList.add("text-white");
 
         const indicator = link.querySelector("span");
@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (result.success) {
           const successMessage = document.createElement("div");
-          successMessage.className = "mt-4 p-2 bg-green-500 text-white rounded";
+          successMessage.className = "mt-4 p-2 bg-primary-500 text-white rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           heroForm.appendChild(successMessage);
 
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (result.success) {
           const successMessage = document.createElement("div");
-          successMessage.className = "mt-4 p-2 bg-green-500 text-white rounded";
+          successMessage.className = "mt-4 p-2 bg-primary-500 text-white rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           contactForm.appendChild(successMessage);
 
