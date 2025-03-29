@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+      }
+      .header {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #eeeeee;
+      }
+      .logo {
+        max-width: 180px;
+        height: auto;
+      }
+      .content {
+        padding: 20px 0;
+      }
+      .footer {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 12px;
+        color: #777777;
+        border-top: 1px solid #eeeeee;
+      }
+      .submission-details {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .data-row {
+        margin-bottom: 10px;
+      }
+      .label {
+        font-weight: bold;
+        display: inline-block;
+        width: 100px;
+        vertical-align: top;
+      }
+      .value {
+        display: inline-block;
+        width: calc(100% - 110px);
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #222222;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .high-priority {
+        color: #cc0000;
+        font-weight: bold;
+      }
+      .form-type {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
+      .hero-form {
+        background-color: #4a6da7;
+        color: white;
+      }
+      .contact-form {
+        background-color: #28a745;
+        color: white;
+      }
+      @media screen and (max-width: 480px) {
+        .container {
+          width: 100%;
+          padding: 10px;
+        }
+        .label,
+        .value {
+          width: 100%;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"
+          alt="AS Traffic And Technical Consulting Logo"
+          class="logo"
+        />
+        <h1>Nova poruka</h1>
+      </div>
+
+      <div class="content">
+        <p>
+          Nova poruka je primljena sa web sajta AS Traffic And Technical
+          Consulting.
+        </p>
+
+        {{FORM_TYPE_HTML}}
+
+        <div class="submission-details">
+          <div class="data-row">
+            <span class="label">Datum:</span>
+            <span class="value">{{DATE}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Ime:</span>
+            <span class="value">{{NAME}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Email:</span>
+            <span class="value">{{EMAIL}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Telefon:</span>
+            <span class="value">{{PHONE}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Tema:</span>
+            <span class="value">{{SUBJECT}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">Poruka:</span>
+            <span class="value">{{MESSAGE}}</span>
+          </div>
+          <div class="data-row">
+            <span class="label">IP Adresa:</span>
+            <span class="value">{{IP}}</span>
+          </div>
+        </div>
+
+        <p class="high-priority">
+          ⚠️ Važno: Odgovorite klijentu u što kraćem roku, najkasnije u roku od
+          24h.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0">
+          <a href="{{REPLY_LINK}}" class="button">Odgovori odmah</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          &copy; 2025 AS Traffic And Technical Consulting - Interni sistem
+          obaveštenja
+        </p>
+        <p style="font-size: 10px; margin-top: 15px">
+          Ova poruka je automatski generisana od strane web sistema AS Traffic
+          And Technical Consulting. Molimo vas da ne šaljete osetljive
+          informacije putem email-a.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

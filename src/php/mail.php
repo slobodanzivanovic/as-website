@@ -11,11 +11,13 @@ class ContactFormHandler {
     private $config;
     private $maxSubmissionsPerHour = 1;
     private $rateLimitFile = 'contact_rate_limit.json';
-    private $mailTemplate;
+    private $userEmailTemplate;
+    private $adminEmailTemplate;
 
     public function __construct() {
         $this->config = require __DIR__ . '/config.php';
-        $this->mailTemplate = file_get_contents(__DIR__ . '/mail_template.html');
+        $this->userEmailTemplate = file_get_contents(__DIR__ . '/user-email-template.html');
+        $this->adminEmailTemplate = file_get_contents(__DIR__ . '/admin-email-template.html');
     }
 
     private function checkRateLimit($ip) {
@@ -94,6 +96,41 @@ class ContactFormHandler {
         return $honeypotTrap || $containsSuspiciousContent;
     }
 
+    private function prepareUserEmailTemplate($validInput) {
+        $emailBody = $this->userEmailTemplate;
+        
+        $emailBody = str_replace('{{NAME}}', $validInput['name'], $emailBody);
+        
+        return $emailBody;
+    }
+    
+    private function prepareAdminEmailTemplate($validInput) {
+        $emailBody = $this->adminEmailTemplate;
+        
+        $formTypeHtml = '';
+        if ($validInput['form_type'] === 'hero') {
+            $formTypeHtml = '<div class="form-type hero-form">Hero Form</div>';
+        } else {
+            $formTypeHtml = '<div class="form-type contact-form">Contact Form</div>';
+        }
+        
+        $dateTime = date('d. F Y. H:i');
+        
+        $subject = !empty($validInput['subject']) ? $validInput['subject'] : $validInput['topic'];
+        
+        $emailBody = str_replace('{{FORM_TYPE_HTML}}', $formTypeHtml, $emailBody);
+        $emailBody = str_replace('{{DATE}}', $dateTime, $emailBody);
+        $emailBody = str_replace('{{NAME}}', $validInput['name'], $emailBody);
+        $emailBody = str_replace('{{EMAIL}}', $validInput['email'], $emailBody);
+        $emailBody = str_replace('{{PHONE}}', $validInput['phone'], $emailBody);
+        $emailBody = str_replace('{{SUBJECT}}', $subject, $emailBody);
+        $emailBody = str_replace('{{MESSAGE}}', nl2br($validInput['message']), $emailBody);
+        $emailBody = str_replace('{{IP}}', $_SERVER['REMOTE_ADDR'], $emailBody);
+        $emailBody = str_replace('{{REPLY_LINK}}', 'mailto:' . $validInput['email'], $emailBody);
+        
+        return $emailBody;
+    }
+
     private function sendConfirmationEmail($validInput) {
         $mail = new PHPMailer(true);
         try {
@@ -101,17 +138,17 @@ class ContactFormHandler {
             $mail->isSMTP();
             $mail->Host = "mailcluster.loopia.se";
             $mail->SMTPAuth = true;
-            $mail->Username = "info@programiraj.rs";
+            $mail->Username = "info@astraffic.rs";
             $mail->Password = $this->config["password"];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom("info@programiraj.rs", "AS");
+            $mail->setFrom("info@astraffic.rs", "AS Traffic And Technical Consulting");
             $mail->addAddress($validInput['email'], $validInput['name']);
 
             $mail->isHTML(true);
-            $mail->Subject = "Vaš upit je primljen - AS";
-            $mail->Body = $this->mailTemplate;
+            $mail->Subject = "Hvala na poruci - AS Traffic And Technical Consulting";
+            $mail->Body = $this->prepareUserEmailTemplate($validInput);
             
             $mail->send();
         } catch (Exception $e) {
@@ -152,26 +189,24 @@ class ContactFormHandler {
             $mail->isSMTP();
             $mail->Host = "mailcluster.loopia.se";
             $mail->SMTPAuth = true;
-            $mail->Username = "info@programiraj.rs";
+            $mail->Username = "info@astraffic.rs";
             $mail->Password = $this->config["password"];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom("info@programiraj.rs", "AS");
-            $mail->addAddress("info@programiraj.rs");
+            $mail->setFrom("info@astraffic.rs", "AS Traffic And Technical Consulting");
+            $mail->addAddress("info@astraffic.rs");
             $mail->addReplyTo($validInput['email'], $validInput['name']);
 
             $mail->isHTML(true);
             
             if ($validInput['form_type'] === 'hero') {
-                $mail->Subject = "AS - Hero Form: {$validInput['name']}";
-                $emailBody = "Ime Prezime: {$validInput['name']}<br>Email: {$validInput['email']}<br>Telefon: {$validInput['phone']}<br>Tema: {$validInput['topic']}<br>Poruka: {$validInput['message']}";
+                $mail->Subject = "AS Traffic - Hero Form: {$validInput['name']}";
             } else {
-                $mail->Subject = "AS - Contact Form: {$validInput['name']}";
-                $emailBody = "Ime Prezime: {$validInput['name']}<br>Email: {$validInput['email']}<br>Telefon: {$validInput['phone']}<br>Tema: {$validInput['subject']}<br>Poruka: {$validInput['message']}";
+                $mail->Subject = "AS Traffic - Contact Form: {$validInput['name']}";
             }
             
-            $mail->Body = $emailBody;
+            $mail->Body = $this->prepareAdminEmailTemplate($validInput);
             
             $mail->send();
 
