@@ -9,7 +9,8 @@
     <!-- css -->
     <link rel="stylesheet" href="/style.css" />
 
-    <script type="module" src="app.js"></script>
+    <!-- Note: Changed from relative path to absolute path with leading slash -->
+    <script type="module" src="/app.js"></script>
   </head>
 
   <body>
@@ -26,12 +27,13 @@
                 class="bg-opacity-90 border-primary-100 flex items-center justify-between rounded-2xl border bg-white px-6 py-2 shadow-md backdrop-blur-sm"
               >
                 <div class="flex items-center">
-                  <img class="h-16 w-auto" src="./img/logo.svg" alt="AS Logo" />
+                  <!-- Changed from relative to absolute path -->
+                  <img class="h-16 w-auto" src="/img/logo.svg" alt="AS Logo" />
                 </div>
 
                 <nav class="hidden items-center space-x-8 md:flex">
                   <a
-                    href="#pocetna"
+                    href="/#pocetna"
                     class="text-primary-800 relative font-medium transition-all duration-200"
                     data-section="pocetna"
                   >
@@ -41,28 +43,28 @@
                     ></span>
                   </a>
                   <a
-                    href="#usluge"
+                    href="/#usluge"
                     class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
                     data-section="usluge"
                   >
                     Usluge
                   </a>
                   <a
-                    href="#o-nama"
+                    href="/#o-nama"
                     class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
                     data-section="o-nama"
                   >
                     O Nama
                   </a>
                   <a
-                    href="#potrazivanja"
+                    href="/#potrazivanja"
                     class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
                     data-section="potrazivanja"
                   >
                     Naknada Štete
                   </a>
                   <a
-                    href="#kontakt"
+                    href="/#kontakt"
                     class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
                     data-section="kontakt"
                   >
@@ -104,7 +106,7 @@
             <div class="container mx-auto px-4 py-8">
               <nav class="flex flex-col items-center space-y-6">
                 <a
-                  href="#pocetna"
+                  href="/#pocetna"
                   class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="pocetna"
                   style="
@@ -119,7 +121,7 @@
                   ></span>
                 </a>
                 <a
-                  href="#usluge"
+                  href="/#usluge"
                   class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="usluge"
                   style="
@@ -130,7 +132,7 @@
                   Usluge
                 </a>
                 <a
-                  href="#o-nama"
+                  href="/#o-nama"
                   class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="o-nama"
                   style="
@@ -141,7 +143,7 @@
                   O Nama
                 </a>
                 <a
-                  href="#potrazivanja"
+                  href="/#potrazivanja"
                   class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="potrazivanja"
                   style="
@@ -152,7 +154,7 @@
                   Naknada Štete
                 </a>
                 <a
-                  href="#kontakt"
+                  href="/#kontakt"
                   class="relative w-full py-3 text-center text-xl font-medium text-white transition-colors duration-200"
                   data-mobile-section="kontakt"
                   style="color: white !important"
@@ -454,6 +456,7 @@
 
               // Set categories
               const categoryTags = document.getElementById("category-tags");
+              categoryTags.innerHTML = ""; // Clear any existing tags first
               post.categories.forEach((category) => {
                 const tagElement = document.createElement("span");
                 tagElement.className =
@@ -462,7 +465,7 @@
                 categoryTags.appendChild(tagElement);
               });
 
-              // Set content
+              // Set content - ensure HTML is inserted, not text
               document.getElementById("blog-content").innerHTML = post.content;
 
               // Update document title
@@ -473,6 +476,9 @@
               const relatedPostsContainer =
                 document.getElementById("related-posts");
 
+              // Clear any existing content
+              relatedPostsContainer.innerHTML = "";
+
               if (posts.length === 0) {
                 relatedPostsContainer.innerHTML = `
           <div class="col-span-full text-center">
@@ -481,8 +487,6 @@
         `;
                 return;
               }
-
-              relatedPostsContainer.innerHTML = "";
 
               posts.forEach((post) => {
                 const postDate = new Date(post.date);
