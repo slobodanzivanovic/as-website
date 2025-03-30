@@ -1,6 +1,52 @@
 import { defineConfig } from "vite";
 import { dirname, resolve } from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import { exec } from "child_process";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Function to get blog posts from JSON file
+const getBlogPosts = () => {
+  const blogDataPath = resolve(__dirname, "src/data/blog-posts.json");
+  if (!fs.existsSync(blogDataPath)) return [];
+
+  try {
+    const data = fs.readFileSync(blogDataPath, "utf8");
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Error reading blog posts:", error);
+    return [];
+  }
+};
+
+// Create input object with blog pages
+const getInputConfig = () => {
+  const baseInputs = {
+    main: resolve(__dirname, "src/index.html"),
+    blog: resolve(__dirname, "src/blog.html"),
+    privacy: resolve(__dirname, "src/politika-privatnosti.html"),
+    400: resolve(__dirname, "src/400.html"),
+    401: resolve(__dirname, "src/401.html"),
+    403: resolve(__dirname, "src/403.html"),
+    404: resolve(__dirname, "src/404.html"),
+    500: resolve(__dirname, "src/500.html"),
+    501: resolve(__dirname, "src/501.html"),
+    502: resolve(__dirname, "src/502.html"),
+  };
+
+  // Add blog post pages to inputs if they exist
+  const blogPosts = getBlogPosts();
+  blogPosts.forEach((post) => {
+    const slug = post.slug;
+    const path = resolve(__dirname, `src/blog/${slug}.html`);
+    if (fs.existsSync(path)) {
+      baseInputs[`blog-${slug}`] = path;
+    }
+  });
+
+  return baseInputs;
+};
 
 export default defineConfig({
   server: {
@@ -10,53 +56,109 @@ export default defineConfig({
     outDir: "../dist",
     emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, "src/index.html"),
-        privacy: resolve(__dirname, "src/politika-privatnosti.html"),
-        400: resolve(__dirname, "src/400.html"),
-        401: resolve(__dirname, "src/401.html"),
-        403: resolve(__dirname, "src/403.html"),
-        404: resolve(__dirname, "src/404.html"),
-        500: resolve(__dirname, "src/500.html"),
-        501: resolve(__dirname, "src/501.html"),
-        502: resolve(__dirname, "src/502.html"),
-      },
+      input: getInputConfig(),
     },
   },
   root: "src",
   plugins: [
     {
+      name: "generate-blog-pages",
+      buildStart: () => {
+        console.log("Generating blog pages...");
+        return new Promise((resolvePromise, reject) => {
+          // Create necessary directories
+          if (!fs.existsSync("scripts")) {
+            fs.mkdirSync("scripts", { recursive: true });
+          }
+
+          // Ensure src/data directory exists
+          const dataDir = resolve(__dirname, "src/data");
+          if (!fs.existsSync(dataDir)) {
+            fs.mkdirSync(dataDir, { recursive: true });
+          }
+
+          // Ensure blog template exists
+          const templatePath = resolve(__dirname, "src/blog-template.html");
+          if (!fs.existsSync(dirname(templatePath))) {
+            fs.mkdirSync(dirname(templatePath), { recursive: true });
+          }
+
+          // Run the blog generator script
+          exec(
+            "node scripts/generate-blog-pages.js",
+            (error, stdout, stderr) => {
+              if (error) {
+                console.error(`Error generating blog pages: ${error.message}`);
+                console.error(stderr);
+                // Don't reject so the build can continue
+                resolvePromise();
+                return;
+              }
+              console.log(stdout);
+              resolvePromise();
+            },
+          );
+        });
+      },
+    },
+    {
       name: "copy-php-files",
       closeBundle: async () => {
         console.log("Copying PHP files and other necessary files to dist...");
 
+        // Create directories
         fs.mkdirSync(resolve(__dirname, "dist/php"), { recursive: true });
         fs.mkdirSync(resolve(__dirname, "dist/vendor/PHPMailer/src"), {
           recursive: true,
         });
+        fs.mkdirSync(resolve(__dirname, "dist/data"), { recursive: true });
+        fs.mkdirSync(resolve(__dirname, "dist/blog"), { recursive: true });
 
-        fs.copyFileSync(
-          resolve(__dirname, "src/php/mail.php"),
-          resolve(__dirname, "dist/php/mail.php"),
-        );
-        fs.copyFileSync(
-          resolve(__dirname, "src/php/config.php"),
-          resolve(__dirname, "dist/php/config.php"),
-        );
-        fs.copyFileSync(
-          resolve(__dirname, "src/php/user-email-template.html"),
-          resolve(__dirname, "dist/php/user-email-template.html"),
-        );
-        fs.copyFileSync(
-          resolve(__dirname, "src/php/admin-email-template.html"),
-          resolve(__dirname, "dist/php/admin-email-template.html"),
-        );
+        // Copy blog data
+        const blogDataPath = resolve(__dirname, "src/data/blog-posts.json");
+        if (fs.existsSync(blogDataPath)) {
+          fs.copyFileSync(
+            blogDataPath,
+            resolve(__dirname, "dist/data/blog-posts.json"),
+          );
+          console.log("Blog data copied to dist/data/");
+        }
 
-        fs.copyFileSync(
-          resolve(__dirname, ".htaccess"),
-          resolve(__dirname, "dist/.htaccess"),
-        );
+        // Copy PHP files
+        const phpFiles = [
+          { src: "src/php/mail.php", dest: "dist/php/mail.php" },
+          { src: "src/php/config.php", dest: "dist/php/config.php" },
+          {
+            src: "src/php/user-email-template.html",
+            dest: "dist/php/user-email-template.html",
+          },
+          {
+            src: "src/php/admin-email-template.html",
+            dest: "dist/php/admin-email-template.html",
+          },
+        ];
 
+        phpFiles.forEach((file) => {
+          if (fs.existsSync(resolve(__dirname, file.src))) {
+            fs.copyFileSync(
+              resolve(__dirname, file.src),
+              resolve(__dirname, file.dest),
+            );
+            console.log(`Copied ${file.src} to ${file.dest}`);
+          } else {
+            console.warn(`Warning: ${file.src} does not exist.`);
+          }
+        });
+
+        // Copy .htaccess
+        if (fs.existsSync(resolve(__dirname, ".htaccess"))) {
+          fs.copyFileSync(
+            resolve(__dirname, ".htaccess"),
+            resolve(__dirname, "dist/.htaccess"),
+          );
+        }
+
+        // Copy PHPMailer files
         const phpMailerFiles = [
           {
             src: "src/vendor/PHPMailer/src/Exception.php",
