@@ -2,27 +2,22 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Paths
 const BLOG_DATA_PATH = path.join(__dirname, "../src/data/blog-posts.json");
 const BLOG_TEMPLATE_PATH = path.join(__dirname, "../src/blog-template.html");
 const OUTPUT_DIR = path.join(__dirname, "../src/blog");
 
-// Ensure the blog directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-// Ensure the data directory exists
 const DATA_DIR = path.join(__dirname, "../src/data");
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// Read blog data and template
 let blogData;
 try {
   blogData = JSON.parse(fs.readFileSync(BLOG_DATA_PATH, "utf8"));
@@ -30,7 +25,6 @@ try {
   console.error("Error reading blog data:", error.message);
   console.log("Creating sample blog data...");
 
-  // Sample blog data if file doesn't exist
   blogData = [
     {
       id: 1,
@@ -47,16 +41,13 @@ try {
     },
   ];
 
-  // Create the data directory if it doesn't exist
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
 
-  // Write the sample data to the file
   fs.writeFileSync(BLOG_DATA_PATH, JSON.stringify(blogData, null, 2), "utf8");
 }
 
-// Read the blog template
 let templateContent;
 try {
   templateContent = fs.readFileSync(BLOG_TEMPLATE_PATH, "utf8");
@@ -64,8 +55,7 @@ try {
   console.error("Error reading blog template:", error.message);
   console.log("Using default template...");
 
-  // Default template if file doesn't exist
-  templateContent = `<!-- Default Blog Post Template -->
+  templateContent = `
 <div class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16">
   <div class="absolute top-0 left-0 h-full w-full">
     <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,15 +130,12 @@ try {
   </div>
 </div>
 
-<!-- Blog Post Script -->
 <script>
   document.addEventListener('DOMContentLoaded', async function() {
-    // Get the current blog post slug from the URL
     const path = window.location.pathname;
     const slug = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
     
     try {
-      // Fetch all blog posts
       const response = await fetch('/data/blog-posts.json');
       if (!response.ok) {
         throw new Error('Failed to load blog posts');
@@ -156,21 +143,18 @@ try {
       
       const blogPosts = await response.json();
       
-      // Find the current post
       const currentPost = blogPosts.find(post => post.slug === slug);
       
       if (!currentPost) {
         throw new Error('Blog post not found');
       }
       
-      // Populate blog post content
       populateBlogPost(currentPost);
       
-      // Find related posts (same category, excluding current post)
       const relatedPosts = blogPosts.filter(post => 
         post.slug !== slug && 
         post.categories.some(cat => currentPost.categories.includes(cat))
-      ).slice(0, 3); // Limit to 3 related posts
+      ).slice(0, 3);
       
       populateRelatedPosts(relatedPosts);
       
@@ -189,10 +173,8 @@ try {
   });
 
   function populateBlogPost(post) {
-    // Set blog title
     document.getElementById('blog-title').textContent = post.title;
     
-    // Set blog date
     const postDate = new Date(post.date);
     const formattedDate = postDate.toLocaleDateString('sr-RS', {
       day: 'numeric',
@@ -201,15 +183,12 @@ try {
     });
     document.getElementById('blog-date').textContent = formattedDate;
     
-    // Set author
     document.getElementById('blog-author').textContent = post.author || 'AS Tim';
     
-    // Set featured image
     const featuredImage = document.getElementById('blog-image');
     featuredImage.src = post.image;
     featuredImage.alt = post.title;
     
-    // Set categories
     const categoryTags = document.getElementById('category-tags');
     post.categories.forEach(category => {
       const tagElement = document.createElement('span');
@@ -218,10 +197,8 @@ try {
       categoryTags.appendChild(tagElement);
     });
     
-    // Set content
     document.getElementById('blog-content').innerHTML = post.content;
     
-    // Update document title
     document.title = \`\${post.title} | AS Blog\`;
   }
 
@@ -282,14 +259,11 @@ try {
 `;
 }
 
-// Generate a blog page for each post
 console.log(`Generating ${blogData.length} blog pages...`);
 
 blogData.forEach((post) => {
   console.log(`  - Generating page for: ${post.title} (${post.slug})`);
 
-  // The full HTML content for the blog page
-  // Here we're combining the blog template with the specific blog post data
   const blogPageContent = `<!doctype html>
 <html lang="sr" class="scroll-smooth">
   <head>
@@ -299,21 +273,18 @@ blogData.forEach((post) => {
     <title>${post.title} | AS</title>
     <meta name="description" content="${post.excerpt}" />
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.astraffic.rs/blog/${post.slug}.html" />
     <meta property="og:title" content="${post.title}" />
     <meta property="og:description" content="${post.excerpt}" />
     <meta property="og:image" content="${post.image}" />
     
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.astraffic.rs/blog/${post.slug}.html" />
     <meta property="twitter:title" content="${post.title}" />
     <meta property="twitter:description" content="${post.excerpt}" />
     <meta property="twitter:image" content="${post.image}" />
 
-    <!-- css -->
     <link rel="stylesheet" href="/style.css" />
   </head>
 
@@ -321,35 +292,27 @@ blogData.forEach((post) => {
     <div class="h-screen">
       <div class="flex h-full flex-col">
         <div class="h-full bg-[#222222]">
-          <!-- Header will be included from your index.html -->
           
           ${templateContent}
           
-          <!-- Footer will be included from your index.html -->
         </div>
       </div>
     </div>
     
-    <!-- Preload blog data for performance -->
     <script>
-      // Preload the current post data to avoid fetching the entire blog-posts.json
       window.currentBlogPost = ${JSON.stringify(post)};
       
-      // Use the preloaded data once the DOM is loaded
       document.addEventListener('DOMContentLoaded', function() {
         if (window.currentBlogPost) {
-          // Directly use the preloaded post data
           populateBlogPost(window.currentBlogPost);
           
-          // For related posts we still need to fetch all posts
           fetch('/data/blog-posts.json')
             .then(response => response.json())
             .then(posts => {
-              // Find related posts (same category, excluding current post)
               const relatedPosts = posts.filter(post => 
                 post.slug !== window.currentBlogPost.slug && 
                 post.categories.some(cat => window.currentBlogPost.categories.includes(cat))
-              ).slice(0, 3); // Limit to 3 related posts
+              ).slice(0, 3);
               
               populateRelatedPosts(relatedPosts);
             })
@@ -363,7 +326,6 @@ blogData.forEach((post) => {
   </body>
 </html>`;
 
-  // Write the blog page to the output directory
   const outputPath = path.join(OUTPUT_DIR, `${post.slug}.html`);
   fs.writeFileSync(outputPath, blogPageContent, "utf8");
 });

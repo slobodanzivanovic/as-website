@@ -7,21 +7,18 @@
     <title>Sve što treba da znate o obaveznom osiguranju vozila | AS</title>
     <meta name="description" content="Informišite se o osnovnim aspektima obaveznog osiguranja vozila, šta pokriva i kako vam može pomoći u slučaju nezgode." />
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://www.astraffic.rs/blog/obavezno-osiguranje-vozila.html" />
     <meta property="og:title" content="Sve što treba da znate o obaveznom osiguranju vozila" />
     <meta property="og:description" content="Informišite se o osnovnim aspektima obaveznog osiguranja vozila, šta pokriva i kako vam može pomoći u slučaju nezgode." />
     <meta property="og:image" content="/img/car-insurance.jpg" />
     
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.astraffic.rs/blog/obavezno-osiguranje-vozila.html" />
     <meta property="twitter:title" content="Sve što treba da znate o obaveznom osiguranju vozila" />
     <meta property="twitter:description" content="Informišite se o osnovnim aspektima obaveznog osiguranja vozila, šta pokriva i kako vam može pomoći u slučaju nezgode." />
     <meta property="twitter:image" content="/img/car-insurance.jpg" />
 
-    <!-- css -->
     <link rel="stylesheet" href="/style.css" />
   </head>
 
@@ -29,7 +26,6 @@
     <div class="h-screen">
       <div class="flex h-full flex-col">
         <div class="h-full bg-[#222222]">
-          <!-- Header will be included from your index.html -->
           
           <!doctype html>
 <html lang="sr" class="scroll-smooth">
@@ -39,10 +35,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sajt</title>
 
-    <!-- css -->
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- Note: Changed from relative path to absolute path with leading slash -->
     <script type="module" src="/app.js"></script>
   </head>
 
@@ -50,7 +44,6 @@
     <div class="h-screen">
       <div class="flex h-full flex-col">
         <div class="h-full bg-[#222222]">
-          <!-- Header start -->
           <header
             class="absolute top-0 left-0 z-50 w-full py-4 transition-all duration-300"
             id="main-header"
@@ -60,7 +53,6 @@
                 class="bg-opacity-90 border-primary-100 flex items-center justify-between rounded-2xl border bg-white px-6 py-2 shadow-md backdrop-blur-sm"
               >
                 <div class="flex items-center">
-                  <!-- Changed from relative to absolute path -->
                   <img class="h-16 w-auto" src="/img/logo.svg" alt="AS Logo" />
                 </div>
 
@@ -198,8 +190,6 @@
             </div>
           </div>
 
-          <!-- Blog section -->
-          <!-- Blog Post Content Section -->
           <div
             class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16"
           >
@@ -224,7 +214,6 @@
             <div
               class="relative z-10 container mx-auto px-4 py-8 sm:px-6 lg:px-8"
             >
-              <!-- Back to blog link -->
               <div class="mb-8">
                 <a
                   href="/blog.html"
@@ -248,23 +237,18 @@
                 </a>
               </div>
 
-              <!-- Blog Post Container -->
               <div
                 class="card-effect border-primary-100 rounded-xl border bg-white p-6 shadow-md md:p-8 lg:p-10"
               >
                 <div class="mx-auto max-w-4xl">
-                  <!-- Blog Header -->
                   <div class="mb-8 text-center">
                     <div class="mb-3 flex justify-center space-x-2">
-                      <!-- Category tags - will be filled dynamically -->
                       <div id="category-tags"></div>
                     </div>
                     <h1
                       id="blog-title"
                       class="text-primary-800 mb-4 text-3xl font-light md:text-4xl lg:text-5xl"
-                    >
-                      <!-- Title will be inserted here -->
-                    </h1>
+                    ></h1>
                     <div
                       class="text-primary-600 flex flex-col items-center justify-center space-y-2 text-sm md:flex-row md:space-y-0 md:space-x-4"
                     >
@@ -283,9 +267,7 @@
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                           />
                         </svg>
-                        <span id="blog-date"
-                          ><!-- Date will be inserted here --></span
-                        >
+                        <span id="blog-date"></span>
                       </div>
                       <div class="hidden md:block">•</div>
                       <div class="flex items-center">
@@ -303,9 +285,7 @@
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                           />
                         </svg>
-                        <span id="blog-author"
-                          ><!-- Author will be inserted here --></span
-                        >
+                        <span id="blog-author"></span>
                       </div>
                     </div>
                   </div>
@@ -319,7 +299,6 @@
                     />
                   </div>
 
-                  <!-- Blog Content -->
                   <div
                     id="blog-content"
                     class="text-primary-700 prose md:prose-lg lg:prose-xl max-w-none"
@@ -388,7 +367,6 @@
                 </div>
               </div>
 
-              <!-- Related Posts Section -->
               <div class="mt-16">
                 <h2
                   class="text-primary-800 mb-8 text-center text-3xl font-light"
@@ -398,24 +376,19 @@
                 <div
                   id="related-posts"
                   class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-                >
-                  <!-- Related posts will be inserted here -->
-                </div>
+                ></div>
               </div>
             </div>
           </div>
 
-          <!-- Blog Post Script -->
           <script>
             document.addEventListener("DOMContentLoaded", async function () {
-              // Get the current blog post slug from the URL
               const path = window.location.pathname;
               const slug = path
                 .substring(path.lastIndexOf("/") + 1)
                 .replace(".html", "");
 
               try {
-                // Fetch all blog posts
                 const response = await fetch("/data/blog-posts.json");
                 if (!response.ok) {
                   throw new Error("Failed to load blog posts");
@@ -423,7 +396,6 @@
 
                 const blogPosts = await response.json();
 
-                // Find the current post
                 const currentPost = blogPosts.find(
                   (post) => post.slug === slug,
                 );
@@ -432,10 +404,8 @@
                   throw new Error("Blog post not found");
                 }
 
-                // Populate blog post content
                 populateBlogPost(currentPost);
 
-                // Find related posts (same category, excluding current post)
                 const relatedPosts = blogPosts
                   .filter(
                     (post) =>
@@ -444,7 +414,7 @@
                         currentPost.categories.includes(cat),
                       ),
                   )
-                  .slice(0, 3); // Limit to 3 related posts
+                  .slice(0, 3);
 
                 populateRelatedPosts(relatedPosts);
               } catch (error) {
@@ -462,10 +432,8 @@
             });
 
             function populateBlogPost(post) {
-              // Set blog title
               document.getElementById("blog-title").textContent = post.title;
 
-              // Set blog date
               const postDate = new Date(post.date);
               const formattedDate = postDate.toLocaleDateString("sr-RS", {
                 day: "numeric",
@@ -474,18 +442,15 @@
               });
               document.getElementById("blog-date").textContent = formattedDate;
 
-              // Set author
               document.getElementById("blog-author").textContent =
                 post.author || "AS Tim";
 
-              // Set featured image
               const featuredImage = document.getElementById("blog-image");
               featuredImage.src = post.image;
               featuredImage.alt = post.title;
 
-              // Set categories
               const categoryTags = document.getElementById("category-tags");
-              categoryTags.innerHTML = ""; // Clear any existing tags first
+              categoryTags.innerHTML = "";
               post.categories.forEach((category) => {
                 const tagElement = document.createElement("span");
                 tagElement.className =
@@ -494,10 +459,8 @@
                 categoryTags.appendChild(tagElement);
               });
 
-              // Set content - ensure HTML is inserted, not text
               document.getElementById("blog-content").innerHTML = post.content;
 
-              // Update document title
               document.title = `${post.title} | AS Blog`;
             }
 
@@ -505,7 +468,6 @@
               const relatedPostsContainer =
                 document.getElementById("related-posts");
 
-              // Clear any existing content
               relatedPostsContainer.innerHTML = "";
 
               if (posts.length === 0) {
@@ -559,9 +521,7 @@
             }
           </script>
 
-          <!-- Footer Section start -->
           <footer class="bg-primary-800 relative w-full overflow-hidden pt-16">
-            <!-- Background SVG -->
             <div class="absolute top-0 left-0 h-full w-full">
               <svg
                 width="100%"
@@ -585,7 +545,6 @@
               <div
                 class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4"
               >
-                <!-- About Us -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">O Nama</h3>
                   <div class="mb-6">
@@ -597,7 +556,6 @@
                     ostvarite svoja prava na naknadu štete.
                   </p>
                   <div class="mt-4 flex space-x-4">
-                    <!-- Social Media Icons -->
                     <a
                       href="#"
                       class="bg-primary-600 hover:bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
@@ -650,7 +608,6 @@
                   </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Brzi Linkovi
@@ -715,7 +672,6 @@
                   </ul>
                 </div>
 
-                <!-- Our Services -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Naše Usluge
@@ -886,7 +842,6 @@
                   </ul>
                 </div>
 
-                <!-- Contact Us -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Kontaktirajte Nas
@@ -977,7 +932,6 @@
                 </div>
               </div>
 
-              <!-- Copyright -->
               <div class="border-primary-700 mt-12 border-t py-8">
                 <div
                   class="flex flex-col items-center justify-between md:flex-row"
@@ -1002,7 +956,6 @@
               </div>
             </div>
           </footer>
-          <!-- Footer Section end -->
         </div>
       </div>
     </div>
@@ -1010,31 +963,24 @@
 </html>
 
           
-          <!-- Footer will be included from your index.html -->
         </div>
       </div>
     </div>
     
-    <!-- Preload blog data for performance -->
     <script>
-      // Preload the current post data to avoid fetching the entire blog-posts.json
       window.currentBlogPost = {"id":2,"slug":"obavezno-osiguranje-vozila","title":"Sve što treba da znate o obaveznom osiguranju vozila","excerpt":"Informišite se o osnovnim aspektima obaveznog osiguranja vozila, šta pokriva i kako vam može pomoći u slučaju nezgode.","content":"<p>Obavezno osiguranje vozila je zakonska obaveza svakog vlasnika motornog vozila u Srbiji. Ovo osiguranje pruža osnovnu zaštitu u slučaju nezgode, ali je važno razumeti šta tačno pokriva i koja su vaša prava.</p><h2>Šta je obavezno osiguranje vozila?</h2><p>Obavezno osiguranje od automobilske odgovornosti (AO) je vrsta osiguranja koja pokriva štetu koju vozač motornog vozila nanese trećim licima u saobraćajnoj nezgodi. Ovo osiguranje je zakonski obavezno za sva registrovana vozila koja učestvuju u saobraćaju.</p><h2>Šta pokriva obavezno osiguranje?</h2><p>Obavezno osiguranje vozila pokriva:</p><ul><li>Štetu nanetu drugim vozilima i imovini trećih lica</li><li>Telesne povrede ili smrt drugih učesnika u saobraćaju</li><li>Nematerijalnu štetu (fizički bolovi, duševna patnja, strah) drugih lica</li></ul><p>Važno je napomenuti da obavezno osiguranje NE pokriva:</p><ul><li>Štetu na vašem vozilu</li><li>Vaše telesne povrede</li><li>Krađu ili oštećenje vašeg vozila usled vremenskih nepogoda</li></ul><h2>Limiti pokrića</h2><p>Obavezno osiguranje ima određene limite pokrića. Prema trenutnim propisima, minimalni limiti pokrića su:</p><ul><li>Za štetu na stvarima: najmanje 1.000.000 evra po štetnom događaju</li><li>Za štetu na licima: najmanje 5.000.000 evra po štetnom događaju</li></ul><h2>Proces naknade štete</h2><p>U slučaju saobraćajne nezgode, proces naknade štete ide sledećim redosledom:</p><ol><li>Prijavite nezgodu policiji</li><li>Popunite Evropski izveštaj o saobraćajnoj nezgodi (ako je primenjivo)</li><li>Prijavite štetu osiguravajućem društvu krivca za nezgodu</li><li>Prikupite i dostavite svu potrebnu dokumentaciju</li><li>Sačekajte procenu štete od strane osiguravača</li><li>Primite naknadu ako je zahtev opravdan</li></ol><h2>Dodatna osiguranja</h2><p>Pored obaveznog osiguranja, preporučujemo da razmotrite i:</p><ul><li>Kasko osiguranje - pokriva štetu na vašem vozilu</li><li>Osiguranje od krađe</li><li>Osiguranje putnika</li><li>Osiguranje od pravne zaštite</li></ul><p>Za više informacija o osiguranju vozila i kako vam možemo pomoći u ostvarivanju prava na naknadu štete, kontaktirajte naš tim stručnjaka koji vam stoji na raspolaganju.</p>","author":"Ana Jovanović","date":"2025-03-10","image":"/img/car-insurance.jpg","categories":["osiguranje","saveti"],"featured":false};
       
-      // Use the preloaded data once the DOM is loaded
       document.addEventListener('DOMContentLoaded', function() {
         if (window.currentBlogPost) {
-          // Directly use the preloaded post data
           populateBlogPost(window.currentBlogPost);
           
-          // For related posts we still need to fetch all posts
           fetch('/data/blog-posts.json')
             .then(response => response.json())
             .then(posts => {
-              // Find related posts (same category, excluding current post)
               const relatedPosts = posts.filter(post => 
                 post.slug !== window.currentBlogPost.slug && 
                 post.categories.some(cat => window.currentBlogPost.categories.includes(cat))
-              ).slice(0, 3); // Limit to 3 related posts
+              ).slice(0, 3);
               
               populateRelatedPosts(relatedPosts);
             })

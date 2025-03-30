@@ -1,14 +1,11 @@
 const initMobileMenu = () => {
-  // Add CSS to document head to ensure mobile menu visibility
   const style = document.createElement("style");
   style.textContent = `
-    /* Force white text on mobile menu items */
     #mobile-menu-overlay a {
       color: #ffffff !important;
       opacity: 1 !important;
     }
     
-    /* Enhanced active indicator */
     #mobile-menu-overlay a[data-mobile-section].active span,
     #mobile-menu-overlay a[data-mobile-section="pocetna"] span {
       background-color: #ffffff !important;
@@ -17,38 +14,29 @@ const initMobileMenu = () => {
       visibility: visible !important;
     }
     
-    /* Better borders */
     #mobile-menu-overlay a {
       border-color: rgba(255,255,255,0.2) !important;
     }
     
-    /* Darker mobile menu background for better contrast */
     #mobile-menu-overlay {
       background-color: #1a1a1a !important;
     }
   `;
   document.head.appendChild(style);
 
-  // Get all mobile menu links
   const mobileLinks = document.querySelectorAll(
     "#mobile-menu-overlay a[data-mobile-section]",
   );
 
-  // Function to update the active section in mobile menu
   const updateMobileMenu = () => {
-    // Get the current section ID from window.activeSection
     const currentSection = window.activeSection || "pocetna";
 
-    // Update all mobile links
     mobileLinks.forEach((link) => {
       const linkSection = link.getAttribute("data-mobile-section");
 
-      // If this link matches the current section
       if (linkSection === currentSection) {
-        // Bold this link
         link.style.fontWeight = "bold";
 
-        // Add underline if it doesn't exist
         if (!link.querySelector("span")) {
           const indicator = document.createElement("span");
           indicator.className =
@@ -58,10 +46,8 @@ const initMobileMenu = () => {
           link.appendChild(indicator);
         }
       } else {
-        // Normal weight for non-active links
         link.style.fontWeight = "normal";
 
-        // Remove underline from non-active links
         const indicator = link.querySelector("span");
         if (indicator) {
           indicator.remove();
@@ -70,7 +56,6 @@ const initMobileMenu = () => {
     });
   };
 
-  // Initial update
   updateMobileMenu();
 };
 
@@ -85,19 +70,16 @@ const initServicesCarousel = () => {
   let touchEndX = 0;
 
   const updateSlides = () => {
-    // Hide all slides
     slides.forEach((slide) => {
       slide.style.display = "none";
       slide.style.opacity = 0;
     });
 
-    // Show current slide
     slides[currentIndex].style.display = "block";
     setTimeout(() => {
       slides[currentIndex].style.opacity = 1;
     }, 10);
 
-    // Update dots
     dots.forEach((dot, i) => {
       if (i === currentIndex) {
         dot.classList.add("active", "bg-primary-500", "opacity-90");
@@ -164,18 +146,16 @@ const initServicesCarousel = () => {
     }
   });
 
-  // Autoplay functionality
   let autoplayInterval;
 
   const startAutoplay = () => {
-    // Clear any existing interval first
     if (autoplayInterval) {
       clearInterval(autoplayInterval);
     }
 
     autoplayInterval = setInterval(() => {
       goToSlide(currentIndex + 1);
-    }, 5000); // 5 seconds
+    }, 5000);
   };
 
   const stopAutoplay = () => {
@@ -184,10 +164,8 @@ const initServicesCarousel = () => {
     }
   };
 
-  // Start autoplay immediately
   startAutoplay();
 
-  // Pause autoplay on mouse hover or touch
   const carousel = document.querySelector(".services-carousel");
   carousel.addEventListener("mouseenter", stopAutoplay);
   carousel.addEventListener("mouseleave", startAutoplay);
@@ -343,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const updateActiveSection = (newActiveSection) => {
     activeSection = newActiveSection;
-    window.activeSection = activeSection; // Make it accessible globally
+    window.activeSection = activeSection;
 
     document.querySelectorAll("nav a[data-section]").forEach((link) => {
       const section = link.getAttribute("data-section");
@@ -370,19 +348,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Also update mobile menu links
     const mobileLinks = document.querySelectorAll(
       "#mobile-menu-overlay a[data-mobile-section]",
     );
     mobileLinks.forEach((link) => {
       const section = link.getAttribute("data-mobile-section");
 
-      // If this link matches the current section
       if (section === activeSection) {
-        // Bold this link
         link.style.fontWeight = "bold";
 
-        // Add underline if it doesn't exist
         if (!link.querySelector("span")) {
           const indicator = document.createElement("span");
           indicator.className =
@@ -392,10 +366,8 @@ document.addEventListener("DOMContentLoaded", function () {
           link.appendChild(indicator);
         }
       } else {
-        // Normal weight for non-active links
         link.style.fontWeight = "normal";
 
-        // Remove underline from non-active links
         const indicator = link.querySelector("span");
         if (indicator) {
           indicator.remove();
