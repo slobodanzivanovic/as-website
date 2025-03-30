@@ -1,21 +1,19 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-/* Define custom theme variables to match logo colors */
 @theme {
-  /* Primary grayscale palette */
-  --color-primary-950: #121212; /* Deep black like logo */
+  --color-primary-950: #121212;
   --color-primary-900: #1a1a1a;
   --color-primary-800: #222222;
   --color-primary-700: #2c2c2c;
   --color-primary-600: #383838;
-  --color-primary-500: #4d4d4d; /* Medium gray from logo */
+  --color-primary-500: #4d4d4d;
   --color-primary-400: #6e6e6e;
-  --color-primary-300: #8a8a8a; /* Light gray like logo */
+  --color-primary-300: #8a8a8a;
   --color-primary-200: #a6a6a6;
   --color-primary-100: #d1d1d1;
   --color-primary-50: #f5f5f5;
 
-  /* Background colors */
   --color-background-light: #ffffff;
   --color-background-medium: #f8f8f8;
   --color-background-dark: #f0f0f0;
@@ -44,7 +42,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* Base sections styling */
 .min-home-screen {
   min-height: 65vh;
 }
@@ -53,7 +50,6 @@
   min-height: 40vh;
 }
 
-/* Header styling */
 #main-header {
   transition:
     background-color 0.3s ease,
@@ -71,7 +67,6 @@
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-/* Navigation styling */
 nav a {
   position: relative;
   transition: color 0.3s ease;
@@ -93,7 +88,6 @@ nav a.active::after {
   width: 100%;
 }
 
-/* Button styling */
 .btn-primary {
   background-color: var(--color-primary-800);
   color: white;
@@ -124,7 +118,6 @@ nav a.active::after {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Card styling */
 .card {
   background-color: white;
   border-radius: 1rem;
@@ -141,7 +134,6 @@ nav a.active::after {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Service button styling */
 .service-button {
   transition:
     transform 0.3s ease,
@@ -152,7 +144,6 @@ nav a.active::after {
   transform: scale(1.05);
 }
 
-/* Section backgrounds */
 .bg-gradient-light {
   background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
 }
@@ -161,7 +152,6 @@ nav a.active::after {
   background: linear-gradient(135deg, #f8f8f8 0%, #eeeeee 100%);
 }
 
-/* Shaped BG */
 .shape-bg::before {
   content: "";
   position: absolute;
@@ -186,7 +176,6 @@ nav a.active::after {
   z-index: -1;
 }
 
-/* Carousel styling */
 .services-carousel {
   position: relative;
   padding: 0 1rem;
@@ -277,7 +266,6 @@ nav a.active::after {
   opacity: 0.7;
 }
 
-/* Form styling */
 input,
 textarea,
 select {
@@ -299,7 +287,6 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.1);
 }
 
-/* Card effect for sections */
 .card-effect {
   background-color: white;
   border: 1px solid var(--color-primary-100);

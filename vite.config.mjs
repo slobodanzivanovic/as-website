@@ -6,7 +6,6 @@ import { exec } from "child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Function to get blog posts from JSON file
 const getBlogPosts = () => {
   const blogDataPath = resolve(__dirname, "src/data/blog-posts.json");
   if (!fs.existsSync(blogDataPath)) return [];
@@ -20,7 +19,6 @@ const getBlogPosts = () => {
   }
 };
 
-// Create input object with blog pages
 const getInputConfig = () => {
   const baseInputs = {
     main: resolve(__dirname, "src/index.html"),
@@ -35,7 +33,6 @@ const getInputConfig = () => {
     502: resolve(__dirname, "src/502.html"),
   };
 
-  // Add blog post pages to inputs if they exist
   const blogPosts = getBlogPosts();
   blogPosts.forEach((post) => {
     const slug = post.slug;
@@ -66,31 +63,26 @@ export default defineConfig({
       buildStart: () => {
         console.log("Generating blog pages...");
         return new Promise((resolvePromise, reject) => {
-          // Create necessary directories
           if (!fs.existsSync("scripts")) {
             fs.mkdirSync("scripts", { recursive: true });
           }
 
-          // Ensure src/data directory exists
           const dataDir = resolve(__dirname, "src/data");
           if (!fs.existsSync(dataDir)) {
             fs.mkdirSync(dataDir, { recursive: true });
           }
 
-          // Ensure blog template exists
           const templatePath = resolve(__dirname, "src/blog-template.html");
           if (!fs.existsSync(dirname(templatePath))) {
             fs.mkdirSync(dirname(templatePath), { recursive: true });
           }
 
-          // Run the blog generator script
           exec(
             "node scripts/generate-blog-pages.js",
             (error, stdout, stderr) => {
               if (error) {
                 console.error(`Error generating blog pages: ${error.message}`);
                 console.error(stderr);
-                // Don't reject so the build can continue
                 resolvePromise();
                 return;
               }
@@ -106,7 +98,6 @@ export default defineConfig({
       closeBundle: async () => {
         console.log("Copying PHP files and other necessary files to dist...");
 
-        // Create directories
         fs.mkdirSync(resolve(__dirname, "dist/php"), { recursive: true });
         fs.mkdirSync(resolve(__dirname, "dist/vendor/PHPMailer/src"), {
           recursive: true,
@@ -114,7 +105,6 @@ export default defineConfig({
         fs.mkdirSync(resolve(__dirname, "dist/data"), { recursive: true });
         fs.mkdirSync(resolve(__dirname, "dist/blog"), { recursive: true });
 
-        // Copy blog data
         const blogDataPath = resolve(__dirname, "src/data/blog-posts.json");
         if (fs.existsSync(blogDataPath)) {
           fs.copyFileSync(
@@ -124,7 +114,6 @@ export default defineConfig({
           console.log("Blog data copied to dist/data/");
         }
 
-        // Copy PHP files
         const phpFiles = [
           { src: "src/php/mail.php", dest: "dist/php/mail.php" },
           { src: "src/php/config.php", dest: "dist/php/config.php" },
@@ -150,7 +139,6 @@ export default defineConfig({
           }
         });
 
-        // Copy .htaccess
         if (fs.existsSync(resolve(__dirname, ".htaccess"))) {
           fs.copyFileSync(
             resolve(__dirname, ".htaccess"),
@@ -158,7 +146,6 @@ export default defineConfig({
           );
         }
 
-        // Copy PHPMailer files
         const phpMailerFiles = [
           {
             src: "src/vendor/PHPMailer/src/Exception.php",

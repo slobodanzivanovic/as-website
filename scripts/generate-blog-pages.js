@@ -108,7 +108,7 @@ try {
         <div class="mb-10 overflow-hidden rounded-xl">
           <img id="blog-image" src="" alt="" class="h-auto w-full object-cover">
         </div>
-        <div id="blog-content" class="text-primary-700 prose prose-lg max-w-none"></div>
+        <div id="blog-content" class="text-primary-700 prose md:prose-lg lg:prose-xl max-w-none"></div>
         <div class="border-primary-100 mt-12 border-t pt-8">
           <div class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <h3 class="text-primary-800 text-lg font-medium">Podelite ovaj članak</h3>

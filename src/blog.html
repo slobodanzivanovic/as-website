@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sajt</title>
 
-    <!-- css -->
     <link rel="stylesheet" href="/style.css" />
 
     <script type="module" src="app.js"></script>
@@ -16,7 +15,6 @@
     <div class="h-screen">
       <div class="flex h-full flex-col">
         <div class="h-full bg-[#222222]">
-          <!-- Header start -->
           <header
             class="absolute top-0 left-0 z-50 w-full py-4 transition-all duration-300"
             id="main-header"
@@ -163,8 +161,6 @@
             </div>
           </div>
 
-          <!-- Blog section -->
-          <!-- Blog Section -->
           <div
             class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16"
           >
@@ -189,7 +185,6 @@
             <div
               class="relative z-10 container mx-auto px-4 py-8 sm:px-6 lg:px-8"
             >
-              <!-- Header -->
               <div class="mb-12 text-center">
                 <h1 class="text-primary-800 mb-4 text-5xl font-light">
                   Naš Blog
@@ -200,7 +195,6 @@
                 </p>
               </div>
 
-              <!-- Category Filter -->
               <div class="mb-8 flex flex-wrap justify-center gap-3">
                 <button
                   class="category-filter active bg-primary-800 hover:bg-primary-700 rounded-full px-5 py-2 text-white transition-all duration-300"
@@ -234,20 +228,15 @@
                 </button>
               </div>
 
-              <!-- Blog Grid -->
               <div
                 id="blog-grid"
                 class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-              >
-                <!-- Blog cards will be generated here -->
-              </div>
+              ></div>
             </div>
           </div>
 
-          <!-- Blog page script -->
           <script>
             document.addEventListener("DOMContentLoaded", async function () {
-              // Fetch blog data from JSON file
               try {
                 const response = await fetch("/data/blog-posts.json");
                 if (!response.ok) {
@@ -280,7 +269,6 @@
                 return;
               }
 
-              // Sort posts by date (newest first)
               posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
               posts.forEach((post) => {
@@ -333,7 +321,6 @@
 
               filterButtons.forEach((button) => {
                 button.addEventListener("click", () => {
-                  // Remove active class from all buttons
                   filterButtons.forEach((btn) => {
                     btn.classList.remove(
                       "active",
@@ -348,7 +335,6 @@
                     );
                   });
 
-                  // Add active class to clicked button
                   button.classList.remove(
                     "bg-white",
                     "border",
@@ -384,9 +370,7 @@
             }
           </script>
 
-          <!-- Footer Section start -->
           <footer class="bg-primary-800 relative w-full overflow-hidden pt-16">
-            <!-- Background SVG -->
             <div class="absolute top-0 left-0 h-full w-full">
               <svg
                 width="100%"
@@ -410,7 +394,6 @@
               <div
                 class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4"
               >
-                <!-- About Us -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">O Nama</h3>
                   <div class="mb-6">
@@ -422,7 +405,6 @@
                     ostvarite svoja prava na naknadu štete.
                   </p>
                   <div class="mt-4 flex space-x-4">
-                    <!-- Social Media Icons -->
                     <a
                       href="#"
                       class="bg-primary-600 hover:bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
@@ -475,7 +457,6 @@
                   </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Brzi Linkovi
@@ -540,7 +521,6 @@
                   </ul>
                 </div>
 
-                <!-- Our Services -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Naše Usluge
@@ -711,7 +691,6 @@
                   </ul>
                 </div>
 
-                <!-- Contact Us -->
                 <div>
                   <h3 class="mb-6 text-xl font-medium text-white">
                     Kontaktirajte Nas
@@ -802,7 +781,6 @@
                 </div>
               </div>
 
-              <!-- Copyright -->
               <div class="border-primary-700 mt-12 border-t py-8">
                 <div
                   class="flex flex-col items-center justify-between md:flex-row"
@@ -827,7 +805,6 @@
               </div>
             </div>
           </footer>
-          <!-- Footer Section end -->
         </div>
       </div>
     </div>
