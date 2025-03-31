@@ -2,24 +2,24 @@ const initMobileMenu = () => {
   const style = document.createElement("style");
   style.textContent = `
     #mobile-menu-overlay a {
-      color: #ffffff !important;
+      color: #e9edef !important;
       opacity: 1 !important;
     }
     
     #mobile-menu-overlay a[data-mobile-section].active span,
     #mobile-menu-overlay a[data-mobile-section="pocetna"] span {
-      background-color: #ffffff !important;
+      background-color: #e9edef !important;
       height: 2px !important;
       opacity: 1 !important;
       visibility: visible !important;
     }
     
     #mobile-menu-overlay a {
-      border-color: rgba(255,255,255,0.2) !important;
+      border-color: rgba(233, 237, 239, 0.2) !important;
     }
     
     #mobile-menu-overlay {
-      background-color: #1a1a1a !important;
+      background-color: #283134 !important;
     }
   `;
   document.head.appendChild(style);
@@ -41,7 +41,7 @@ const initMobileMenu = () => {
           const indicator = document.createElement("span");
           indicator.className =
             "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-          indicator.style.backgroundColor = "white";
+          indicator.style.backgroundColor = "#e9edef";
           indicator.style.height = "2px";
           link.appendChild(indicator);
         }
@@ -82,11 +82,11 @@ const initServicesCarousel = () => {
 
     dots.forEach((dot, i) => {
       if (i === currentIndex) {
-        dot.classList.add("active", "bg-primary-500", "opacity-90");
-        dot.classList.remove("bg-white", "opacity-50");
+        dot.classList.add("active", "bg-primary-400", "opacity-90");
+        dot.classList.remove("bg-primary-100", "opacity-50");
       } else {
-        dot.classList.remove("active", "bg-primary-500", "opacity-90");
-        dot.classList.add("bg-white", "opacity-50");
+        dot.classList.remove("active", "bg-primary-400", "opacity-90");
+        dot.classList.add("bg-primary-100", "opacity-50");
       }
     });
   };
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isScrolled) {
       header.classList.remove("absolute");
       header.classList.add("fixed", "top-0");
-      header.style.backgroundColor = "rgba(17, 24, 39, 0.1)";
+      header.style.backgroundColor = "rgba(81, 104, 110, 0.85)";
       header.style.backdropFilter = "blur(10px)";
     } else {
       header.classList.remove("fixed", "top-0");
@@ -327,19 +327,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const section = link.getAttribute("data-section");
 
       if (section === activeSection) {
-        link.classList.add("text-primary-800");
-        link.classList.remove("text-primary-700");
+        link.classList.add("text-primary-50");
+        link.classList.remove("text-primary-100");
 
         let indicator = link.querySelector("span");
         if (!indicator) {
           indicator = document.createElement("span");
           indicator.className =
-            "absolute bottom-0 left-0 w-full h-0.5 bg-primary-800 -mb-1";
+            "absolute bottom-0 left-0 w-full h-0.5 bg-primary-50 -mb-1";
           link.appendChild(indicator);
         }
       } else {
-        link.classList.remove("text-primary-800");
-        link.classList.add("text-primary-700");
+        link.classList.remove("text-primary-50");
+        link.classList.add("text-primary-100");
 
         const indicator = link.querySelector("span");
         if (indicator) {
@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const indicator = document.createElement("span");
           indicator.className =
             "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-          indicator.style.backgroundColor = "white";
+          indicator.style.backgroundColor = "#e9edef";
           indicator.style.height = "2px";
           link.appendChild(indicator);
         }
@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result.success) {
           const successMessage = document.createElement("div");
           successMessage.className =
-            "mt-4 p-2 bg-primary-500 text-white rounded";
+            "mt-4 p-2 bg-primary-500 text-primary-50 rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           heroForm.appendChild(successMessage);
 
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result.success) {
           const successMessage = document.createElement("div");
           successMessage.className =
-            "mt-4 p-2 bg-primary-500 text-white rounded";
+            "mt-4 p-2 bg-primary-500 text-primary-50 rounded";
           successMessage.textContent = "Vaša poruka je uspešno poslata!";
           contactForm.appendChild(successMessage);
 
