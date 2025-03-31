@@ -25,7 +25,7 @@
   <body>
     <div class="h-screen">
       <div class="flex h-full flex-col">
-        <div class="h-full bg-[#222222]">
+        <div class="h-full bg-[#51686e]">
           
           <!doctype html>
 <html lang="sr" class="scroll-smooth">
@@ -53,7 +53,7 @@
                 class="bg-opacity-90 border-primary-200 bg-primary-700 flex items-center justify-between rounded-2xl border px-6 py-2 shadow-md backdrop-blur-sm"
               >
                 <div class="flex items-center">
-                  <img class="h-16 w-auto" src="./img/logo.svg" alt="AS Logo" />
+                  <img class="h-16 w-auto" src="/img/logo.svg" alt="AS Logo" />
                 </div>
 
                 <nav class="hidden items-center space-x-8 md:flex">
@@ -396,7 +396,7 @@
                     O Nama
                   </h3>
                   <div class="mb-6">
-                    <img src="./img/logo.svg" alt="AS Logo" class="mb-4 h-12" />
+                    <img src="/img/logo.svg" alt="AS Logo" class="mb-4 h-12" />
                   </div>
                   <p class="text-primary-100 mb-4">
                     Specijalizovani smo za pružanje osiguranja i pomoći pri
@@ -971,7 +971,7 @@
             })
             .catch(error => {
               console.error('Error loading related blog posts:', error);
-              document.getElementById('related-posts').innerHTML = '<div class="col-span-full text-center"><p class="text-primary-600">Trenutno nema povezanih članaka.</p></div>';
+              document.getElementById('related-posts').innerHTML = '<div class="col-span-full text-center"><p class="text-primary-100">Trenutno nema povezanih članaka.</p></div>';
             });
         }
       });
