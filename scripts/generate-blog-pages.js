@@ -55,7 +55,6 @@ try {
   console.error("Error reading blog template:", error.message);
   console.log("Using default template...");
 
-  // This is a fallback default template with the correct color scheme
   templateContent = `
 <div class="bg-primary-600 shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16">
   <div class="absolute top-0 left-0 h-full w-full">

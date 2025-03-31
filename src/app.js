@@ -8,10 +8,11 @@ const initMobileMenu = () => {
     
     #mobile-menu-overlay a[data-mobile-section].active span,
     #mobile-menu-overlay a[data-mobile-section="pocetna"] span {
-      background-color: #e9edef !important;
-      height: 2px !important;
-      opacity: 1 !important;
-      visibility: visible !important;
+      display: none !important;
+    }
+    
+    #mobile-menu-overlay a[data-mobile-section]::after {
+      display: none !important;
     }
     
     #mobile-menu-overlay a {
@@ -36,22 +37,13 @@ const initMobileMenu = () => {
 
       if (linkSection === currentSection) {
         link.style.fontWeight = "bold";
-
-        if (!link.querySelector("span")) {
-          const indicator = document.createElement("span");
-          indicator.className =
-            "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-          indicator.style.backgroundColor = "#e9edef";
-          indicator.style.height = "2px";
-          link.appendChild(indicator);
-        }
       } else {
         link.style.fontWeight = "normal";
+      }
 
-        const indicator = link.querySelector("span");
-        if (indicator) {
-          indicator.remove();
-        }
+      const indicator = link.querySelector("span");
+      if (indicator) {
+        indicator.remove();
       }
     });
   };
@@ -280,6 +272,44 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
   const menuIcon = mobileMenuButton.querySelector("svg");
 
+  const isHomePage =
+    window.location.pathname === "/" ||
+    window.location.pathname === "/index.html" ||
+    window.location.pathname === "/index" ||
+    window.location.pathname.endsWith("/index.html");
+
+  if (!isHomePage) {
+    document.querySelectorAll("nav a[data-section]").forEach((link) => {
+      link.classList.remove("text-primary-50");
+      link.classList.add("text-primary-100");
+      const indicator = link.querySelector("span");
+      if (indicator) {
+        link.removeChild(indicator);
+      }
+    });
+
+    document
+      .querySelectorAll("#mobile-menu-overlay a[data-mobile-section]")
+      .forEach((link) => {
+        link.style.fontWeight = "normal";
+        const indicator = link.querySelector("span");
+        if (indicator) {
+          indicator.remove();
+        }
+      });
+
+    if (!document.getElementById("mobile-nav-no-effects")) {
+      const style = document.createElement("style");
+      style.id = "mobile-nav-no-effects";
+      style.textContent = `
+        #mobile-menu-overlay a[data-mobile-section]::after {
+          display: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   const sections = [
     { id: "pocetna", element: document.getElementById("pocetna") },
     { id: "usluge", element: document.getElementById("usluge") },
@@ -306,15 +336,17 @@ document.addEventListener("DOMContentLoaded", function () {
       header.style.backdropFilter = "none";
     }
 
-    const currentPosition = window.scrollY + 100;
+    if (isHomePage) {
+      const currentPosition = window.scrollY + 100;
 
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const { id, element } = sections[i];
-      if (element && element.offsetTop <= currentPosition) {
-        if (activeSection !== id) {
-          updateActiveSection(id);
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const { id, element } = sections[i];
+        if (element && element.offsetTop <= currentPosition) {
+          if (activeSection !== id) {
+            updateActiveSection(id);
+          }
+          break;
         }
-        break;
       }
     }
   };
@@ -323,57 +355,50 @@ document.addEventListener("DOMContentLoaded", function () {
     activeSection = newActiveSection;
     window.activeSection = activeSection;
 
-    document.querySelectorAll("nav a[data-section]").forEach((link) => {
-      const section = link.getAttribute("data-section");
+    if (isHomePage) {
+      document.querySelectorAll("nav a[data-section]").forEach((link) => {
+        const section = link.getAttribute("data-section");
 
-      if (section === activeSection) {
-        link.classList.add("text-primary-50");
-        link.classList.remove("text-primary-100");
+        if (section === activeSection) {
+          link.classList.add("text-primary-50");
+          link.classList.remove("text-primary-100");
 
-        let indicator = link.querySelector("span");
-        if (!indicator) {
-          indicator = document.createElement("span");
-          indicator.className =
-            "absolute bottom-0 left-0 w-full h-0.5 bg-primary-50 -mb-1";
-          link.appendChild(indicator);
+          let indicator = link.querySelector("span");
+          if (!indicator) {
+            indicator = document.createElement("span");
+            indicator.className =
+              "absolute bottom-0 left-0 w-full h-0.5 bg-primary-50 -mb-1";
+            link.appendChild(indicator);
+          }
+        } else {
+          link.classList.remove("text-primary-50");
+          link.classList.add("text-primary-100");
+
+          const indicator = link.querySelector("span");
+          if (indicator) {
+            link.removeChild(indicator);
+          }
         }
-      } else {
-        link.classList.remove("text-primary-50");
-        link.classList.add("text-primary-100");
+      });
 
-        const indicator = link.querySelector("span");
-        if (indicator) {
-          link.removeChild(indicator);
+      const mobileLinks = document.querySelectorAll(
+        "#mobile-menu-overlay a[data-mobile-section]",
+      );
+      mobileLinks.forEach((link) => {
+        const section = link.getAttribute("data-mobile-section");
+
+        if (section === activeSection) {
+          link.style.fontWeight = "bold";
+        } else {
+          link.style.fontWeight = "normal";
         }
-      }
-    });
-
-    const mobileLinks = document.querySelectorAll(
-      "#mobile-menu-overlay a[data-mobile-section]",
-    );
-    mobileLinks.forEach((link) => {
-      const section = link.getAttribute("data-mobile-section");
-
-      if (section === activeSection) {
-        link.style.fontWeight = "bold";
-
-        if (!link.querySelector("span")) {
-          const indicator = document.createElement("span");
-          indicator.className =
-            "absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform";
-          indicator.style.backgroundColor = "#e9edef";
-          indicator.style.height = "2px";
-          link.appendChild(indicator);
-        }
-      } else {
-        link.style.fontWeight = "normal";
 
         const indicator = link.querySelector("span");
         if (indicator) {
           indicator.remove();
         }
-      }
-    });
+      });
+    }
   };
 
   const toggleMobileMenu = () => {
