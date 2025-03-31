@@ -62,11 +62,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-#mobile-menu-overlay {
-  transition: opacity 0.3s ease;
-  background-color: rgba(40, 49, 52, 0.95);
-}
-
 nav a {
   position: relative;
   transition: color 0.3s ease;
