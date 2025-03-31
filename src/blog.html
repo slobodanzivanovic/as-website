@@ -14,54 +14,54 @@
   <body>
     <div class="h-screen">
       <div class="flex h-full flex-col">
-        <div class="h-full bg-[#222222]">
+        <div class="h-full bg-[#51686e]">
           <header
             class="absolute top-0 left-0 z-50 w-full py-4 transition-all duration-300"
             id="main-header"
           >
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div
-                class="bg-opacity-90 border-primary-100 flex items-center justify-between rounded-2xl border bg-white px-6 py-2 shadow-md backdrop-blur-sm"
+                class="bg-opacity-90 border-primary-200 bg-primary-700 flex items-center justify-between rounded-2xl border px-6 py-2 shadow-md backdrop-blur-sm"
               >
                 <div class="flex items-center">
-                  <img class="h-16 w-auto" src="./img/logo.svg" alt="AS Logo" />
+                  <img class="h-16 w-auto" src="/img/logo.svg" alt="AS Logo" />
                 </div>
 
                 <nav class="hidden items-center space-x-8 md:flex">
                   <a
                     href="#pocetna"
-                    class="text-primary-800 relative font-medium transition-all duration-200"
+                    class="text-primary-50 relative font-medium transition-all duration-200"
                     data-section="pocetna"
                   >
                     Početna
                     <span
-                      class="bg-primary-800 absolute bottom-0 left-0 -mb-1 h-0.5 w-full"
+                      class="bg-primary-50 absolute bottom-0 left-0 -mb-1 h-0.5 w-full"
                     ></span>
                   </a>
                   <a
                     href="#usluge"
-                    class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
+                    class="text-primary-100 hover:text-primary-50 relative font-medium transition-all duration-200"
                     data-section="usluge"
                   >
                     Usluge
                   </a>
                   <a
                     href="#o-nama"
-                    class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
+                    class="text-primary-100 hover:text-primary-50 relative font-medium transition-all duration-200"
                     data-section="o-nama"
                   >
                     O Nama
                   </a>
                   <a
                     href="#potrazivanja"
-                    class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
+                    class="text-primary-100 hover:text-primary-50 relative font-medium transition-all duration-200"
                     data-section="potrazivanja"
                   >
                     Naknada Štete
                   </a>
                   <a
                     href="#kontakt"
-                    class="text-primary-600 hover:text-primary-800 relative font-medium transition-all duration-200"
+                    class="text-primary-100 hover:text-primary-50 relative font-medium transition-all duration-200"
                     data-section="kontakt"
                   >
                     Kontakt
@@ -69,7 +69,7 @@
                 </nav>
 
                 <button
-                  class="text-primary-800 focus:outline-none md:hidden"
+                  class="text-primary-50 focus:outline-none md:hidden"
                   id="mobile-menu-button"
                   aria-label="Toggle mobile menu"
                 >
@@ -95,7 +95,7 @@
           </header>
 
           <div
-            class="bg-primary-800 fixed inset-0 z-40 hidden md:hidden"
+            class="bg-primary-950 fixed inset-0 z-40 hidden md:hidden"
             id="mobile-menu-overlay"
             style="padding-top: 90px"
           >
@@ -103,57 +103,43 @@
               <nav class="flex flex-col items-center space-y-6">
                 <a
                   href="#pocetna"
-                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
+                  class="border-opacity-20 border-primary-100 text-primary-50 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
                   data-mobile-section="pocetna"
-                  style="
-                    color: white !important;
-                    border-color: rgba(255, 255, 255, 0.2);
-                  "
                 >
                   Početna
                   <span
                     class="absolute bottom-0 left-1/2 mb-0 h-1 w-16 -translate-x-1/2 transform"
-                    style="background-color: white; height: 2px"
+                    style="
+                      background-color: var(--color-primary-50);
+                      height: 2px;
+                    "
                   ></span>
                 </a>
                 <a
                   href="#usluge"
-                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
+                  class="border-opacity-20 border-primary-100 text-primary-50 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
                   data-mobile-section="usluge"
-                  style="
-                    color: white !important;
-                    border-color: rgba(255, 255, 255, 0.2);
-                  "
                 >
                   Usluge
                 </a>
                 <a
                   href="#o-nama"
-                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
+                  class="border-opacity-20 border-primary-100 text-primary-50 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
                   data-mobile-section="o-nama"
-                  style="
-                    color: white !important;
-                    border-color: rgba(255, 255, 255, 0.2);
-                  "
                 >
                   O Nama
                 </a>
                 <a
                   href="#potrazivanja"
-                  class="relative w-full border-b border-gray-700 py-3 text-center text-xl font-medium text-white transition-colors duration-200"
+                  class="border-opacity-20 border-primary-100 text-primary-50 relative w-full border-b py-3 text-center text-xl font-medium transition-colors duration-200"
                   data-mobile-section="potrazivanja"
-                  style="
-                    color: white !important;
-                    border-color: rgba(255, 255, 255, 0.2);
-                  "
                 >
                   Naknada Štete
                 </a>
                 <a
                   href="#kontakt"
-                  class="relative w-full py-3 text-center text-xl font-medium text-white transition-colors duration-200"
+                  class="text-primary-50 relative w-full py-3 text-center text-xl font-medium transition-colors duration-200"
                   data-mobile-section="kontakt"
-                  style="color: white !important"
                 >
                   Kontakt
                 </a>
@@ -162,7 +148,7 @@
           </div>
 
           <div
-            class="bg-background-light shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16"
+            class="bg-primary-600 shape-bg relative min-h-screen w-full overflow-hidden pt-32 pb-16"
           >
             <div class="absolute top-0 left-0 h-full w-full">
               <svg
@@ -173,10 +159,10 @@
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 0H1440V900H0V0Z" fill="#ffffff" />
+                <path d="M0 0H1440V900H0V0Z" fill="#51686e" />
                 <path
                   d="M-300 200C150 250 450 600 1800 400"
-                  stroke="#f5f5f5"
+                  stroke="#97a7ac"
                   stroke-width="300"
                   stroke-linecap="round"
                 />
@@ -186,10 +172,10 @@
               class="relative z-10 container mx-auto px-4 py-8 sm:px-6 lg:px-8"
             >
               <div class="mb-12 text-center">
-                <h1 class="text-primary-800 mb-4 text-5xl font-light">
+                <h1 class="text-primary-50 mb-4 text-5xl font-light">
                   Naš Blog
                 </h1>
-                <p class="text-primary-600 mx-auto max-w-3xl text-xl">
+                <p class="text-primary-100 mx-auto max-w-3xl text-xl">
                   Najnovije informacije, saveti i stručna mišljenja iz oblasti
                   osiguranja, naknade štete i saobraćajnih nezgoda
                 </p>
@@ -197,31 +183,31 @@
 
               <div class="mb-8 flex flex-wrap justify-center gap-3">
                 <button
-                  class="category-filter active bg-primary-800 hover:bg-primary-700 rounded-full px-5 py-2 text-white transition-all duration-300"
+                  class="category-filter active bg-primary-700 hover:bg-primary-800 text-primary-50 rounded-full px-5 py-2 transition-all duration-300"
                   data-category="all"
                 >
                   Sve kategorije
                 </button>
                 <button
-                  class="category-filter hover:bg-primary-100 border-primary-300 text-primary-800 rounded-full border bg-white px-5 py-2 transition-all duration-300"
+                  class="category-filter hover:bg-primary-700 border-primary-500 text-primary-100 bg-primary-800 rounded-full border px-5 py-2 transition-all duration-300"
                   data-category="saveti"
                 >
                   Saveti
                 </button>
                 <button
-                  class="category-filter hover:bg-primary-100 border-primary-300 text-primary-800 rounded-full border bg-white px-5 py-2 transition-all duration-300"
+                  class="category-filter hover:bg-primary-700 border-primary-500 text-primary-100 bg-primary-800 rounded-full border px-5 py-2 transition-all duration-300"
                   data-category="osiguranje"
                 >
                   Osiguranje
                 </button>
                 <button
-                  class="category-filter hover:bg-primary-100 border-primary-300 text-primary-800 rounded-full border bg-white px-5 py-2 transition-all duration-300"
+                  class="category-filter hover:bg-primary-700 border-primary-500 text-primary-100 bg-primary-800 rounded-full border px-5 py-2 transition-all duration-300"
                   data-category="naknada-stete"
                 >
                   Naknada štete
                 </button>
                 <button
-                  class="category-filter hover:bg-primary-100 border-primary-300 text-primary-800 rounded-full border bg-white px-5 py-2 transition-all duration-300"
+                  class="category-filter hover:bg-primary-700 border-primary-500 text-primary-100 bg-primary-800 rounded-full border px-5 py-2 transition-all duration-300"
                   data-category="vozila"
                 >
                   Vozila
@@ -380,10 +366,10 @@
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M0 0H1440V300H0V0Z" fill="#1a1a1a"></path>
+                <path d="M0 0H1440V300H0V0Z" fill="#3e4c51"></path>
                 <path
                   d="M-300 100C150 150 450 300 1800 200"
-                  stroke="#2c2c2c"
+                  stroke="#49585e"
                   stroke-width="300"
                   stroke-linecap="round"
                 ></path>
@@ -395,11 +381,13 @@
                 class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4"
               >
                 <div>
-                  <h3 class="mb-6 text-xl font-medium text-white">O Nama</h3>
+                  <h3 class="text-primary-50 mb-6 text-xl font-medium">
+                    O Nama
+                  </h3>
                   <div class="mb-6">
-                    <img src="./img/logo.svg" alt="AS Logo" class="mb-4 h-12" />
+                    <img src="img/logo.svg" alt="AS Logo" class="mb-4 h-12" />
                   </div>
-                  <p class="mb-4 text-gray-300">
+                  <p class="text-primary-100 mb-4">
                     Specijalizovani smo za pružanje osiguranja i pomoći pri
                     naplati odštete. Naš tim stručnjaka je tu da vam pomogne da
                     ostvarite svoja prava na naknadu štete.
@@ -407,10 +395,10 @@
                   <div class="mt-4 flex space-x-4">
                     <a
                       href="#"
-                      class="bg-primary-600 hover:bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
+                      class="bg-primary-700 hover:bg-primary-600 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
                     >
                       <svg
-                        class="h-5 w-5 text-white"
+                        class="text-primary-50 h-5 w-5"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                         aria-hidden="true"
@@ -424,10 +412,10 @@
                     </a>
                     <a
                       href="#"
-                      class="bg-primary-600 hover:bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
+                      class="bg-primary-700 hover:bg-primary-600 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
                     >
                       <svg
-                        class="h-5 w-5 text-white"
+                        class="text-primary-50 h-5 w-5"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                         aria-hidden="true"
@@ -441,10 +429,10 @@
                     </a>
                     <a
                       href="#"
-                      class="bg-primary-600 hover:bg-primary-500 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
+                      class="bg-primary-700 hover:bg-primary-600 flex h-10 w-10 items-center justify-center rounded-full transition duration-300"
                     >
                       <svg
-                        class="h-5 w-5 text-white"
+                        class="text-primary-50 h-5 w-5"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                         aria-hidden="true"
@@ -458,14 +446,14 @@
                 </div>
 
                 <div>
-                  <h3 class="mb-6 text-xl font-medium text-white">
+                  <h3 class="text-primary-50 mb-6 text-xl font-medium">
                     Brzi Linkovi
                   </h3>
                   <ul class="space-y-3">
                     <li>
                       <a
                         href="#pocetna"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Početna
                       </a>
@@ -473,7 +461,7 @@
                     <li>
                       <a
                         href="#o-nama"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> O Nama
                       </a>
@@ -481,7 +469,7 @@
                     <li>
                       <a
                         href="#usluge"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Usluge
                       </a>
@@ -489,7 +477,7 @@
                     <li>
                       <a
                         href="#potrazivanja"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Naknada Štete
                       </a>
@@ -497,7 +485,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Blog
                       </a>
@@ -505,7 +493,7 @@
                     <li>
                       <a
                         href="#kontakt"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Kontakt
                       </a>
@@ -513,7 +501,7 @@
                     <li>
                       <a
                         href="politika-privatnosti.html"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <span class="mr-2">•</span> Politika Privatnosti
                       </a>
@@ -522,14 +510,14 @@
                 </div>
 
                 <div>
-                  <h3 class="mb-6 text-xl font-medium text-white">
+                  <h3 class="text-primary-50 mb-6 text-xl font-medium">
                     Naše Usluge
                   </h3>
                   <ul class="space-y-3">
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -541,7 +529,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path
                             d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
@@ -553,7 +541,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -565,7 +553,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path
                             d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
@@ -577,7 +565,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -589,7 +577,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path
                             d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
@@ -601,7 +589,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -613,7 +601,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path d="M5 18h14"></path>
                           <path d="M6 18v-1a2 2 0 0 1 2-2h1"></path>
@@ -629,7 +617,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -641,7 +629,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path
                             d="M22 12.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2v-1.5"
@@ -656,7 +644,7 @@
                     <li>
                       <a
                         href="#"
-                        class="hover:text-primary-300 flex items-center text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 flex items-center transition duration-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -668,7 +656,7 @@
                           stroke-width="2"
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          class="text-primary-400 mr-2 h-4 w-4"
+                          class="text-primary-300 mr-2 h-4 w-4"
                         >
                           <path
                             d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.6-1.2-.9-1.9-1.1-1.1-.2-2.3-.1-3.4.4-1.1.4-2.1 1.3-2.5 2.4l-.3 1.1"
@@ -692,7 +680,7 @@
                 </div>
 
                 <div>
-                  <h3 class="mb-6 text-xl font-medium text-white">
+                  <h3 class="text-primary-50 mb-6 text-xl font-medium">
                     Kontaktirajte Nas
                   </h3>
                   <ul class="space-y-4">
@@ -707,14 +695,14 @@
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="text-primary-400 mt-0.5 mr-3 h-5 w-5 flex-shrink-0"
+                        class="text-primary-300 mt-0.5 mr-3 h-5 w-5 flex-shrink-0"
                       >
                         <path
                           d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
                         ></path>
                         <circle cx="12" cy="10" r="3"></circle>
                       </svg>
-                      <span class="text-gray-300">
+                      <span class="text-primary-100">
                         Bulevar Kralja Aleksandra 12,
                         <br />
                         11000 Beograd, Srbija
@@ -731,7 +719,7 @@
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="text-primary-400 mr-3 h-5 w-5 flex-shrink-0"
+                        class="text-primary-300 mr-3 h-5 w-5 flex-shrink-0"
                       >
                         <path
                           d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
@@ -739,7 +727,7 @@
                       </svg>
                       <a
                         href="tel:+38160318920"
-                        class="hover:text-primary-300 text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 transition duration-300"
                       >
                         +381 60 318 9200
                       </a>
@@ -755,7 +743,7 @@
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="text-primary-400 mr-3 h-5 w-5 flex-shrink-0"
+                        class="text-primary-300 mr-3 h-5 w-5 flex-shrink-0"
                       >
                         <path
                           d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
@@ -764,7 +752,7 @@
                       </svg>
                       <a
                         href="mailto:info@osiguranje.rs"
-                        class="hover:text-primary-300 text-gray-300 transition duration-300"
+                        class="hover:text-primary-300 text-primary-100 transition duration-300"
                       >
                         info@osiguranje.rs
                       </a>
@@ -773,7 +761,7 @@
                   <div class="mt-6">
                     <a
                       href="#kontakt"
-                      class="bg-primary-500 hover:bg-primary-400 inline-block rounded-full px-6 py-2 text-sm font-medium text-white transition duration-300"
+                      class="bg-primary-700 hover:bg-primary-600 text-primary-50 inline-block rounded-full px-6 py-2 text-sm font-medium transition duration-300"
                     >
                       Besplatna Konsultacija
                     </a>
@@ -785,19 +773,19 @@
                 <div
                   class="flex flex-col items-center justify-between md:flex-row"
                 >
-                  <p class="mb-4 text-sm text-gray-400 md:mb-0">
+                  <p class="text-primary-300 mb-4 text-sm md:mb-0">
                     &copy; <span id="current-year"></span> AS. Sva prava
                     zadržana.
                   </p>
                   <div class="flex space-x-6">
                     <a
                       href="politika-privatnosti.html"
-                      class="hover:text-primary-300 text-sm text-gray-400 transition duration-300"
+                      class="hover:text-primary-100 text-primary-300 text-sm transition duration-300"
                       >Politika privatnosti</a
                     >
                     <a
                       href="#"
-                      class="hover:text-primary-300 text-sm text-gray-400 transition duration-300"
+                      class="hover:text-primary-100 text-primary-300 text-sm transition duration-300"
                       >Uslovi korišćenja</a
                     >
                   </div>
@@ -808,5 +796,135 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const response = await fetch("/data/blog-posts.json");
+          if (!response.ok) {
+            throw new Error("Failed to load blog posts");
+          }
+
+          const blogPosts = await response.json();
+          renderBlogPosts(blogPosts);
+          setupCategoryFilters(blogPosts);
+        } catch (error) {
+          console.error("Error loading blog posts:", error);
+          document.getElementById("blog-grid").innerHTML = `
+    <div class="col-span-full text-center">
+      <p class="text-primary-100 text-lg">Greška pri učitavanju članaka. Molimo pokušajte ponovo kasnije.</p>
+    </div>
+    `;
+        }
+      });
+
+      function renderBlogPosts(posts) {
+        const blogGrid = document.getElementById("blog-grid");
+        blogGrid.innerHTML = "";
+
+        if (posts.length === 0) {
+          blogGrid.innerHTML = `
+    <div class="col-span-full text-center">
+      <p class="text-primary-100 text-lg">Trenutno nema dostupnih članaka.</p>
+    </div>
+    `;
+          return;
+        }
+
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        posts.forEach((post) => {
+          const postDate = new Date(post.date);
+          const formattedDate = postDate.toLocaleDateString("sr-RS", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+
+          const postElement = document.createElement("div");
+          postElement.className = `card-effect blog-card border-primary-500 bg-primary-800 rounded-xl border shadow-md transition-all duration-300 hover:shadow-lg overflow-hidden ${post.categories.map((c) => `category-${c}`).join(" ")}`;
+          postElement.setAttribute(
+            "data-categories",
+            post.categories.join(","),
+          );
+
+          postElement.innerHTML = `
+    <div class="relative aspect-video overflow-hidden">
+      <img src="${post.image}" alt="${post.title}" class="h-full w-full object-cover transition-transform duration-500 hover:scale-105">
+      <div class="absolute top-4 left-4 bg-primary-700 text-primary-50 text-xs uppercase tracking-wider px-3 py-1 rounded-full">
+        ${post.categories[0]}
+      </div>
+    </div>
+    <div class="p-6">
+      <div class="text-primary-300 mb-2 flex items-center text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        ${formattedDate}
+      </div>
+      <h3 class="text-primary-50 mb-3 text-xl font-medium">${post.title}</h3>
+      <p class="text-primary-100 mb-4">${post.excerpt}</p>
+      <a href="/blog/${post.slug}.html" class="text-primary-300 hover:text-primary-50 inline-flex items-center font-medium transition-colors">
+        Pročitaj više
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    `;
+
+          blogGrid.appendChild(postElement);
+        });
+      }
+
+      function setupCategoryFilters(posts) {
+        const filterButtons = document.querySelectorAll(".category-filter");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            filterButtons.forEach((btn) => {
+              btn.classList.remove(
+                "active",
+                "bg-primary-700",
+                "text-primary-50",
+              );
+              btn.classList.add(
+                "bg-primary-800",
+                "border",
+                "border-primary-500",
+                "text-primary-100",
+              );
+            });
+
+            button.classList.remove(
+              "bg-primary-800",
+              "border",
+              "border-primary-500",
+              "text-primary-100",
+            );
+            button.classList.add("active", "bg-primary-700", "text-primary-50");
+
+            const category = button.getAttribute("data-category");
+            filterPostsByCategory(category);
+          });
+        });
+      }
+
+      function filterPostsByCategory(category) {
+        const blogCards = document.querySelectorAll(".blog-card");
+
+        blogCards.forEach((card) => {
+          const cardCategories = card
+            .getAttribute("data-categories")
+            .split(",");
+
+          if (category === "all" || cardCategories.includes(category)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+    </script>
   </body>
 </html>
