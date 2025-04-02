@@ -9,7 +9,7 @@
     "format": "prettier --write './src/**/*.{html,js,jsx,ts,tsx}'"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.16",
+    "@tailwindcss/postcss": "^4.1.1",
     "@tailwindcss/typography": "^0.5.16",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
